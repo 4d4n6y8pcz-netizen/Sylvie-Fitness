@@ -174,7 +174,6 @@ outline: none;
 .form-control:focus { border-color: var(--accent); background: white; }
 .form-control::placeholder { color: rgba(107,101,96,0.5); }
 
-/* Course selector */
 .course-select-grid {
 display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
 }
@@ -188,36 +187,21 @@ border-color: var(--accent-dark);
 background: rgba(196,168,130,0.08);
 }
 .course-option input { display:none; }
-.course-option .opt-name {
-font-size: 13px; font-weight: 500; margin-bottom: 4px;
-}
-.course-option .opt-price {
-font-size: 12px; color: var(--accent-dark);
-}
+.course-option .opt-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+.course-option .opt-price { font-size: 12px; color: var(--accent-dark); }
 
-/* Date picker */
 .week-schedule { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
 .day-col { text-align:center; }
-.day-label {
-font-size: 11px; color: var(--warm-grey); font-weight:500;
-margin-bottom: 6px; letter-spacing:1px;
-}
+.day-label { font-size: 11px; color: var(--warm-grey); font-weight:500; margin-bottom: 6px; letter-spacing:1px; }
 .time-slot {
 padding: 8px 4px; border: 1.5px solid var(--border);
 border-radius: 8px; font-size: 11px; text-align:center;
 cursor: pointer; transition: all 0.15s; line-height: 1.3;
-color: var(--warm-grey);
-background: white;
+color: var(--warm-grey); background: white;
 }
 .time-slot:hover { border-color: var(--accent); color: var(--charcoal); }
-.time-slot.selected {
-background: var(--charcoal); color: white;
-border-color: var(--charcoal);
-}
-.time-slot.unavailable {
-background: #F0EEEC; color: #C0BCB8;
-cursor: not-allowed; border-color: transparent;
-}
+.time-slot.selected { background: var(--charcoal); color: white; border-color: var(--charcoal); }
+.time-slot.unavailable { background: #F0EEEC; color: #C0BCB8; cursor: not-allowed; border-color: transparent; }
 .time-slot .slot-course { font-size: 10px; font-weight:500; }
 .time-slot .slot-time { font-size: 10px; }
 
@@ -233,34 +217,22 @@ border-bottom: 1px solid rgba(255,255,255,0.1);
 padding-bottom: 16px;
 }
 .summary-items { min-height: 120px; }
-.summary-empty {
-font-size: 13px; color: rgba(245,240,232,0.4);
-font-style: italic; padding: 20px 0;
-}
+.summary-empty { font-size: 13px; color: rgba(245,240,232,0.4); font-style: italic; padding: 20px 0; }
 .summary-item {
 display: flex; justify-content: space-between;
 padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
 font-size: 13px;
 }
 .summary-item .item-info { color: rgba(245,240,232,0.8); }
-.summary-item .item-info small {
-display:block; font-size: 11px;
-color: rgba(245,240,232,0.45); margin-top:2px;
-}
+.summary-item .item-info small { display:block; font-size: 11px; color: rgba(245,240,232,0.45); margin-top:2px; }
 .summary-item .item-price { color: var(--accent); }
 .summary-total {
 display: flex; justify-content: space-between;
 margin-top: 20px; padding-top: 16px;
 border-top: 1px solid rgba(255,255,255,0.15);
 }
-.summary-total .total-label {
-font-size: 12px; letter-spacing:2px;
-text-transform:uppercase; color: rgba(245,240,232,0.6);
-}
-.summary-total .total-price {
-font-family: 'Cormorant Garamond', serif;
-font-size: 36px; color: var(--accent);
-}
+.summary-total .total-label { font-size: 12px; letter-spacing:2px; text-transform:uppercase; color: rgba(245,240,232,0.6); }
+.summary-total .total-price { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--accent); }
 .notice-box {
 margin-top: 20px; padding: 14px;
 background: rgba(255,255,255,0.05);
@@ -281,12 +253,8 @@ transition: background 0.2s, transform 0.1s;
 .btn-book:disabled { background: rgba(196,168,130,0.3); cursor:not-allowed; transform:none; }
 
 /* ── MY SCHEDULE ── */
-.month-nav {
-display:flex; align-items:center; gap:16px; margin-bottom: 28px;
-}
-.month-nav h2 {
-font-family: 'Cormorant Garamond', serif; font-size: 28px;
-}
+.month-nav { display:flex; align-items:center; gap:16px; margin-bottom: 28px; }
+.month-nav h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; }
 .btn-icon {
 width:36px; height:36px; border:1px solid var(--border);
 border-radius:50%; background:white; cursor:pointer;
@@ -305,16 +273,10 @@ background: var(--charcoal); color: var(--cream);
 text-align:center; padding: 12px 4px;
 font-size: 12px; letter-spacing: 1.5px; text-transform:uppercase;
 }
-.cal-day {
-background: white; min-height: 100px; padding: 10px 8px;
-position: relative;
-}
+.cal-day { background: white; min-height: 100px; padding: 10px 8px; position: relative; }
 .cal-day.other-month { background: var(--warm-white); }
 .cal-day.today { background: #FFF8F0; }
-.cal-day-num {
-font-size: 13px; font-weight: 500; color: var(--warm-grey);
-margin-bottom: 6px;
-}
+.cal-day-num { font-size: 13px; font-weight: 500; color: var(--warm-grey); margin-bottom: 6px; }
 .cal-day.today .cal-day-num {
 background: var(--charcoal); color: white;
 width: 24px; height: 24px; border-radius: 50%;
@@ -333,29 +295,18 @@ cursor: pointer;
 
 /* Booking list */
 .booking-list { display:flex; flex-direction:column; gap:12px; margin-top: 32px; }
-.booking-list-title {
-font-family: 'Cormorant Garamond', serif; font-size: 24px;
-margin-bottom: 16px;
-}
+.booking-list-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 16px; }
 .booking-item {
 background: white; border: 1px solid var(--border);
 border-radius: 14px; padding: 18px 22px;
 display: flex; align-items: center; gap: 20px;
 }
-.booking-item-dot {
-width: 12px; height: 12px; border-radius: 50%; flex-shrink:0;
-}
+.booking-item-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink:0; }
 .booking-item-info { flex:1; }
 .booking-item-info strong { font-size: 15px; }
 .booking-item-info small { display:block; font-size: 12px; color: var(--warm-grey); margin-top:2px; }
-.booking-item-price {
-font-family: 'Cormorant Garamond', serif; font-size: 22px;
-color: var(--accent-dark);
-}
-.booking-status {
-padding: 4px 12px; border-radius: 40px; font-size: 11px;
-font-weight:500; letter-spacing:0.5px;
-}
+.booking-item-price { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--accent-dark); }
+.booking-status { padding: 4px 12px; border-radius: 40px; font-size: 11px; font-weight:500; letter-spacing:0.5px; }
 .status-confirmed { background: #E8F5EB; color: var(--success); }
 .status-pending { background: #FFF3E0; color: #E08C1A; }
 .btn-cancel {
@@ -367,10 +318,7 @@ transition: all 0.15s;
 .btn-cancel:hover { border-color: #D4696A; color: #D4696A; }
 
 /* ── ADMIN ── */
-.admin-layout {
-display: grid; grid-template-columns: 220px 1fr;
-gap: 0; min-height: calc(100vh - 64px);
-}
+.admin-layout { display: grid; grid-template-columns: 220px 1fr; gap: 0; min-height: calc(100vh - 64px); }
 .admin-sidebar {
 background: var(--charcoal); padding: 28px 16px;
 border-right: 1px solid rgba(255,255,255,0.05);
@@ -387,15 +335,11 @@ color: rgba(245,240,232,0.65); font-size: 13px;
 cursor: pointer; transition: all 0.15s; margin-bottom:4px;
 user-select: none; -webkit-user-select: none;
 }
-.admin-nav-item:hover, .admin-nav-item.active {
-background: rgba(255,255,255,0.12); color: var(--cream);
-}
+.admin-nav-item:hover, .admin-nav-item.active { background: rgba(255,255,255,0.12); color: var(--cream); }
 .admin-nav-item .icon { font-size: 16px; flex-shrink:0; }
 .admin-content { padding: 28px; overflow-y: auto; overflow-x: hidden; }
 .admin-header { margin-bottom: 24px; }
-.admin-header h2 {
-font-family: 'Cormorant Garamond', serif; font-size: 28px;
-}
+.admin-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; }
 .admin-header p { color: var(--warm-grey); font-size: 13px; margin-top:4px; }
 
 @media (max-width: 700px) {
@@ -416,42 +360,18 @@ text-align: center; border-radius: 8px; margin-bottom: 0;
 .admin-content { padding: 16px; }
 }
 
-/* Stats */
-.stats-grid {
-display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-margin-bottom: 36px;
-}
-.stat-card {
-background: white; border: 1px solid var(--border);
-border-radius: 14px; padding: 22px;
-}
-.stat-card .stat-label {
-font-size: 11px; letter-spacing:1.5px; text-transform:uppercase;
-color: var(--warm-grey); margin-bottom: 10px;
-}
-.stat-card .stat-value {
-font-family: 'Cormorant Garamond', serif; font-size: 36px;
-color: var(--charcoal);
-}
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 36px; }
+.stat-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+.stat-card .stat-label { font-size: 11px; letter-spacing:1.5px; text-transform:uppercase; color: var(--warm-grey); margin-bottom: 10px; }
+.stat-card .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--charcoal); }
 .stat-card .stat-sub { font-size: 12px; color: var(--sage); margin-top:4px; }
 
-/* Admin table */
 .data-table { width:100%; border-collapse:collapse; }
-.data-table th {
-text-align:left; padding: 12px 16px;
-font-size: 11px; letter-spacing:1.5px; text-transform:uppercase;
-color: var(--warm-grey); border-bottom: 1px solid var(--border);
-}
-.data-table td {
-padding: 14px 16px; border-bottom: 1px solid var(--border);
-font-size: 13px;
-}
+.data-table th { text-align:left; padding: 12px 16px; font-size: 11px; letter-spacing:1.5px; text-transform:uppercase; color: var(--warm-grey); border-bottom: 1px solid var(--border); }
+.data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 13px; }
 .data-table tr:hover td { background: var(--warm-white); }
 
-/* Admin form */
-.admin-form-grid {
-display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-}
+.admin-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .btn-primary {
 padding: 12px 28px; border: none; border-radius: 10px;
 background: var(--charcoal); color: var(--cream);
@@ -469,33 +389,16 @@ cursor: pointer; transition: all 0.2s;
 }
 .btn-secondary:hover { border-color: var(--charcoal); }
 
-/* Reminder */
-.reminder-card {
-background: white; border: 1px solid var(--border);
-border-radius: 16px; padding: 28px; margin-bottom: 16px;
-}
-.reminder-card h4 {
-font-size: 16px; margin-bottom: 8px;
-}
+.reminder-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 16px; }
+.reminder-card h4 { font-size: 16px; margin-bottom: 8px; }
 .reminder-card p { font-size: 13px; color: var(--warm-grey); margin-bottom:16px; }
-.reminder-toggle {
-display: flex; align-items:center; gap: 12px;
-}
-.toggle-switch {
-width: 44px; height: 24px; background: var(--border);
-border-radius: 12px; cursor: pointer; position: relative;
-transition: background 0.2s;
-}
+.reminder-toggle { display: flex; align-items:center; gap: 12px; }
+.toggle-switch { width: 44px; height: 24px; background: var(--border); border-radius: 12px; cursor: pointer; position: relative; transition: background 0.2s; }
 .toggle-switch.on { background: var(--sage); }
-.toggle-switch::after {
-content:''; position:absolute; top:2px; left:2px;
-width:20px; height:20px; background:white;
-border-radius:50%; transition: left 0.2s;
-}
+.toggle-switch::after { content:''; position:absolute; top:2px; left:2px; width:20px; height:20px; background:white; border-radius:50%; transition: left 0.2s; }
 .toggle-switch.on::after { left:22px; }
 .toggle-label { font-size: 13px; color: var(--warm-grey); }
 
-/* Toast */
 .toast {
 position: fixed; bottom: 30px; right: 30px;
 background: var(--charcoal); color: var(--cream);
@@ -515,7 +418,6 @@ transition: all 0.2s; display:flex; align-items:center; justify-content:center;
 }
 .btn-admin-lock:hover { background: var(--charcoal); color: var(--cream); border-color:var(--charcoal); }
 
-/* ── MODAL ── */
 .modal-overlay {
 position: fixed; inset:0; background: rgba(28,26,24,0.6);
 z-index: 200; display:flex; align-items:center; justify-content:center;
@@ -529,14 +431,10 @@ width: 360px; box-shadow: 0 24px 80px rgba(28,26,24,0.2);
 transform: translateY(20px); transition: transform 0.25s;
 }
 .modal-overlay.show .modal-box { transform: translateY(0); }
-.modal-box h3 {
-font-family: 'Cormorant Garamond', serif;
-font-size: 26px; margin-bottom: 6px;
-}
+.modal-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 6px; }
 .modal-box p { font-size: 13px; color: var(--warm-grey); margin-bottom: 24px; }
 .modal-error { color: #D4696A; font-size: 12px; margin-top: 8px; min-height:18px; }
 
-/* ── CONFIRM MODAL ── */
 .confirm-modal-overlay {
 position: fixed; inset:0; background: rgba(28,26,24,0.65);
 z-index: 300; display:flex; align-items:center; justify-content:center;
@@ -551,20 +449,14 @@ box-shadow: 0 24px 80px rgba(28,26,24,0.25);
 transform: translateY(16px) scale(0.98); transition: transform 0.22s;
 }
 .confirm-modal-overlay.show .confirm-modal-box { transform: translateY(0) scale(1); }
-.confirm-modal-box h3 {
-font-family: 'Cormorant Garamond', serif;
-font-size: 26px; margin-bottom: 8px;
-}
+.confirm-modal-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 8px; }
 .confirm-modal-box .confirm-summary {
 background: var(--warm-white); border-radius: 12px;
 padding: 16px; margin: 16px 0; font-size: 13px;
 line-height: 1.9; color: var(--warm-grey);
 border: 1px solid var(--border);
 }
-.confirm-modal-box .confirm-notice {
-font-size: 12px; color: var(--warm-grey); line-height: 1.8;
-margin-bottom: 20px;
-}
+.confirm-modal-box .confirm-notice { font-size: 12px; color: var(--warm-grey); line-height: 1.8; margin-bottom: 20px; }
 .confirm-modal-btns { display:flex; gap:10px; }
 .confirm-modal-btns .btn-confirm-yes {
 flex: 1; padding: 14px; border: none; border-radius: 12px;
@@ -587,20 +479,11 @@ display: grid; grid-template-columns: repeat(7,1fr);
 gap: 2px; background: var(--border);
 border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
 }
-.bcal-header {
-background: var(--charcoal); color: var(--cream);
-text-align:center; padding: 8px 2px;
-font-size: 11px; letter-spacing: 1px; text-transform:uppercase;
-}
-.bcal-day {
-background: white; min-height: 80px; padding: 6px 5px;
-cursor: default;
-}
+.bcal-header { background: var(--charcoal); color: var(--cream); text-align:center; padding: 8px 2px; font-size: 11px; letter-spacing: 1px; text-transform:uppercase; }
+.bcal-day { background: white; min-height: 80px; padding: 6px 5px; cursor: default; }
 .bcal-day.other-month { background: var(--warm-white); }
 .bcal-day.today { background: #FFF8F0; }
-.bcal-day-num {
-font-size: 12px; color: var(--warm-grey); margin-bottom: 4px;
-}
+.bcal-day-num { font-size: 12px; color: var(--warm-grey); margin-bottom: 4px; }
 .bcal-day.today .bcal-day-num {
 background: var(--charcoal); color: white;
 width: 20px; height: 20px; border-radius: 50%;
@@ -619,7 +502,6 @@ border: 1.5px solid transparent;
 .bcal-slot .slot-name { font-weight: 500; }
 .bcal-slot .slot-time { opacity: 0.8; }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
 .hero { grid-template-columns:1fr; gap:30px; padding:60px 24px 40px; }
 .booking-container { grid-template-columns:1fr; }
@@ -635,7 +517,6 @@ nav { padding: 0 20px; }
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">SYLVIE<span>FITNESS</span></div>
   <div class="nav-tabs">
@@ -646,7 +527,7 @@ nav { padding: 0 20px; }
   <button class="btn-admin-lock" onclick="showAdminLogin()" title="後台管理">⚙</button>
 </nav>
 
-<!-- ══════════════ PAGE: COURSES ══════════════ -->
+<!-- PAGE: COURSES -->
 <div id="page-courses" class="page active">
   <div class="hero">
     <div class="hero-text">
@@ -654,27 +535,16 @@ nav { padding: 0 20px; }
       <p>專業小班制課程，每堂最多 8 人，確保每位學員都能得到最精確的動作指導與個人化關注。</p>
     </div>
     <div class="hero-meta">
-      <div class="meta-card">
-        <div class="label">上課地點</div>
-        <div class="value">中正紀念堂站 · 林森南路131號</div>
-      </div>
-      <div class="meta-card">
-        <div class="label">課程時長</div>
-        <div class="value">每堂 50 分鐘</div>
-      </div>
-      <div class="meta-card">
-        <div class="label">班級人數</div>
-        <div class="value">3 — 8 人小班制</div>
-      </div>
+      <div class="meta-card"><div class="label">上課地點</div><div class="value">中正紀念堂站 · 林森南路131號</div></div>
+      <div class="meta-card"><div class="label">課程時長</div><div class="value">每堂 50 分鐘</div></div>
+      <div class="meta-card"><div class="label">班級人數</div><div class="value">3 — 8 人小班制</div></div>
     </div>
   </div>
-
   <div class="section">
     <div class="section-title">開課項目</div>
     <div class="section-sub">每週固定時段開課，各課程可自由搭配報名，不限定只能選單一課程</div>
     <div class="courses-grid" id="courses-grid"></div>
   </div>
-
   <div class="section" style="background:var(--charcoal);margin:0;padding:56px 40px;">
     <div class="section-title" style="color:var(--cream);">收費方案</div>
     <div class="section-sub" style="color:rgba(245,240,232,0.5);">各方案均可自由搭配開課項目，不限定課程種類（不限堂數方案包含 Pilates）</div>
@@ -712,74 +582,33 @@ nav { padding: 0 20px; }
       </div>
     </div>
   </div>
-
   <div class="section" style="background:var(--cream);margin:0;padding:48px 40px;">
     <div class="section-title">重要須知</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:24px;">
-      <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--border);">
-        <div style="font-size:20px;margin-bottom:8px;">⏰</div>
-        <h4 style="margin-bottom:8px;">取消政策</h4>
-        <p style="font-size:13px;color:var(--warm-grey);line-height:1.7;">請於上課 24 小時前通知取消，否則視同放棄該堂課程。</p>
-      </div>
-      <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--border);">
-        <div style="font-size:20px;margin-bottom:8px;">📅</div>
-        <h4 style="margin-bottom:8px;">補課規定</h4>
-        <p style="font-size:13px;color:var(--warm-grey);line-height:1.7;">當月課程請於當月使用完畢，恕不接受延期。</p>
-      </div>
-      <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--border);">
-        <div style="font-size:20px;margin-bottom:8px;">💰</div>
-        <h4 style="margin-bottom:8px;">退費說明</h4>
-        <p style="font-size:13px;color:var(--warm-grey);line-height:1.7;">因工作或身體狀況無法上課，以原價單堂 $700 計算退還剩餘費用。</p>
-      </div>
-      <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--border);">
-        <div style="font-size:20px;margin-bottom:8px;">🎯</div>
-        <h4 style="margin-bottom:8px;">一對一選項</h4>
-        <p style="font-size:13px;color:var(--warm-grey);line-height:1.7;">若無法配合團課時間，可加價 $500 換成一對一教練課。</p>
-      </div>
+      <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--border);"><div style="font-size:20px;margin-bottom:8px;">⏰</div><h4 style="margin-bottom:8px;">取消政策</h4><p style="font-size:13px;color:var(--warm-grey);line-height:1.7;">請於上課 24 小時前通知取消，否則視同放棄該堂課程。</p></div>
+      <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--border);"><div style="font-size:20px;margin-bottom:8px;">📅</div><h4 style="margin-bottom:8px;">補課規定</h4><p style="font-size:13px;color:var(--warm-grey);line-height:1.7;">當月課程請於當月使用完畢，恕不接受延期。</p></div>
+      <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--border);"><div style="font-size:20px;margin-bottom:8px;">💰</div><h4 style="margin-bottom:8px;">退費說明</h4><p style="font-size:13px;color:var(--warm-grey);line-height:1.7;">因工作或身體狀況無法上課，以原價單堂 $700 計算退還剩餘費用。</p></div>
+      <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--border);"><div style="font-size:20px;margin-bottom:8px;">🎯</div><h4 style="margin-bottom:8px;">一對一選項</h4><p style="font-size:13px;color:var(--warm-grey);line-height:1.7;">若無法配合團課時間，可加價 $500 換成一對一教練課。</p></div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════ PAGE: BOOKING ══════════════ -->
+<!-- PAGE: BOOKING -->
 <div id="page-booking" class="page">
   <div class="section">
     <div class="section-title">預約課程</div>
     <div class="section-sub">填寫資料 → 選擇方案 → 從月曆點選課程 → 確認預約</div>
     <div class="booking-container">
       <div>
-        <!-- Step 1 -->
         <div class="form-card" style="margin-bottom:20px;">
-          <div class="form-title" style="font-size:20px;margin-bottom:20px;">
-            <span style="color:var(--accent);margin-right:10px;">01</span>學員資料
-          </div>
+          <div class="form-title" style="font-size:20px;margin-bottom:20px;"><span style="color:var(--accent);margin-right:10px;">01</span>學員資料</div>
           <div class="admin-form-grid">
-            <div class="form-group">
-              <label>姓名</label>
-              <input class="form-control" type="text" id="b-name" placeholder="你的名字">
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input class="form-control" type="email" id="b-email" placeholder="email@example.com">
-            </div>
-            <div class="form-group">
-              <label>電話</label>
-              <input class="form-control" type="tel" id="b-phone" placeholder="0912-345-678">
-            </div>
-            <div class="form-group">
-              <label>程度</label>
-              <select class="form-control" id="b-level">
-                <option value="">請選擇</option>
-                <option>完全初學者</option>
-                <option>有一點基礎</option>
-                <option>中級</option>
-                <option>進階</option>
-              </select>
-            </div>
+            <div class="form-group"><label>姓名</label><input class="form-control" type="text" id="b-name" placeholder="你的名字"></div>
+            <div class="form-group"><label>Email</label><input class="form-control" type="email" id="b-email" placeholder="email@example.com"></div>
+            <div class="form-group"><label>電話</label><input class="form-control" type="tel" id="b-phone" placeholder="0912-345-678"></div>
+            <div class="form-group"><label>程度</label><select class="form-control" id="b-level"><option value="">請選擇</option><option>完全初學者</option><option>有一點基礎</option><option>中級</option><option>進階</option></select></div>
           </div>
-          <div class="form-group" style="margin-top:4px;">
-            <label>備註</label>
-            <textarea class="form-control" rows="2" id="b-note" placeholder="身體傷況或其他需求..."></textarea>
-          </div>
+          <div class="form-group" style="margin-top:4px;"><label>備註</label><textarea class="form-control" rows="2" id="b-note" placeholder="身體傷況或其他需求..."></textarea></div>
           <div style="margin-top:20px;padding:18px 20px;background:var(--cream);border-radius:12px;border:1px solid var(--border);">
             <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm-grey);margin-bottom:12px;">付款方式</div>
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
@@ -787,32 +616,23 @@ nav { padding: 0 20px; }
                 <div style="font-size:11px;color:var(--warm-grey);margin-bottom:4px;">台新銀行 Taishin Bank</div>
                 <div style="font-size:13px;font-weight:500;letter-spacing:0.5px;">812 — 2045-1000-1104-37</div>
               </div>
-              <div style="font-size:12px;color:var(--warm-grey);line-height:1.7;">
-                請完成轉帳後<br>填寫帳號後五碼，<br>方便老師對帳 ↓
-              </div>
+              <div style="font-size:12px;color:var(--warm-grey);line-height:1.7;">請完成轉帳後<br>填寫帳號後五碼，<br>方便老師對帳 ↓</div>
             </div>
           </div>
           <div class="form-group" style="margin-top:14px;">
             <label>轉帳帳號後五碼</label>
-            <input class="form-control" type="text" id="b-acct" maxlength="5"
-              placeholder="例：04567" style="letter-spacing:3px;font-size:18px;max-width:160px;">
+            <input class="form-control" type="text" id="b-acct" maxlength="5" placeholder="例：04567" style="letter-spacing:3px;font-size:18px;max-width:160px;">
           </div>
         </div>
 
-        <!-- Step 2 -->
         <div class="form-card" style="margin-bottom:20px;">
-          <div class="form-title" style="font-size:20px;margin-bottom:6px;">
-            <span style="color:var(--accent);margin-right:10px;">02</span>選擇方案
-          </div>
+          <div class="form-title" style="font-size:20px;margin-bottom:6px;"><span style="color:var(--accent);margin-right:10px;">02</span>選擇方案</div>
           <p style="font-size:13px;color:var(--warm-grey);margin-bottom:20px;">選擇不限堂數方案可跨課程預約，包含 Pilates</p>
           <div id="plan-select-grid" style="display:flex;flex-direction:column;gap:10px;"></div>
         </div>
 
-        <!-- Step 3 -->
         <div class="form-card" id="calendar-booking-card" style="display:none;">
-          <div class="form-title" style="font-size:20px;margin-bottom:6px;">
-            <span style="color:var(--accent);margin-right:10px;">03</span>選擇課程時段
-          </div>
+          <div class="form-title" style="font-size:20px;margin-bottom:6px;"><span style="color:var(--accent);margin-right:10px;">03</span>選擇課程時段</div>
           <p id="cal-book-hint" style="font-size:13px;color:var(--warm-grey);margin-bottom:20px;"></p>
           <div class="month-nav" style="margin-bottom:16px;">
             <button class="btn-icon" onclick="changeBookMonth(-1)">&#8249;</button>
@@ -829,13 +649,10 @@ nav { padding: 0 20px; }
         </div>
       </div>
 
-      <!-- Right: Summary -->
       <div>
         <div class="summary-card">
           <div class="summary-title">預約摘要</div>
-          <div class="summary-items" id="summary-items">
-            <div class="summary-empty">尚未選擇方案</div>
-          </div>
+          <div class="summary-items" id="summary-items"><div class="summary-empty">尚未選擇方案</div></div>
           <div class="summary-total">
             <div class="total-label">費用合計</div>
             <div class="total-price" id="total-price">$0</div>
@@ -853,7 +670,7 @@ nav { padding: 0 20px; }
   </div>
 </div>
 
-<!-- ══════════════ PAGE: MY SCHEDULE ══════════════ -->
+<!-- PAGE: MY SCHEDULE -->
 <div id="page-my" class="page">
   <div class="section">
     <div class="month-nav">
@@ -867,7 +684,7 @@ nav { padding: 0 20px; }
   </div>
 </div>
 
-<!-- ══════════════ PAGE: ADMIN ══════════════ -->
+<!-- PAGE: ADMIN -->
 <div id="page-admin" class="page">
   <div class="admin-layout">
     <div class="admin-sidebar">
@@ -888,11 +705,7 @@ nav { padding: 0 20px; }
   <div class="modal-box">
     <h3>後台管理</h3>
     <p>此頁面僅限教練端使用，請輸入密碼繼續</p>
-    <div class="form-group">
-      <label>密碼</label>
-      <input class="form-control" type="password" id="admin-pw" placeholder="輸入後台密碼"
-        onkeydown="if(event.key==='Enter')checkAdminPw()">
-    </div>
+    <div class="form-group"><label>密碼</label><input class="form-control" type="password" id="admin-pw" placeholder="輸入後台密碼" onkeydown="if(event.key==='Enter')checkAdminPw()"></div>
     <div class="modal-error" id="admin-pw-error"></div>
     <div style="display:flex;gap:10px;margin-top:20px;">
       <button class="btn-primary" style="flex:1;" onclick="checkAdminPw()">進入後台</button>
@@ -918,7 +731,6 @@ nav { padding: 0 20px; }
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
@@ -965,9 +777,6 @@ var currentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 var bookMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 var adminMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 
-// ══════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════
 function init() {
   renderCourseCards();
   renderPlanSelect();
@@ -982,19 +791,7 @@ function getDayKey(dow) {
 function renderCourseCards() {
   var grid = document.getElementById('courses-grid');
   grid.innerHTML = COURSES.map(function(c) {
-    return '<div class="course-card">'
-      + '<div class="course-card-header">'
-      + '<span class="course-tag ' + c.tagClass + '">' + c.tag + '</span>'
-      + '<h3>' + c.name + '</h3>'
-      + '<p>' + c.desc + '</p>'
-      + '</div>'
-      + '<div class="course-card-body">'
-      + '<div class="course-info">'
-      + '<div class="info-item"><strong>' + c.duration + ' 分鐘</strong>課程時長</div>'
-      + '<div class="info-item"><strong>' + c.capacity + '</strong>班級人數</div>'
-      + '</div>'
-      + '</div>'
-      + '</div>';
+    return '<div class="course-card"><div class="course-card-header"><span class="course-tag '+c.tagClass+'">'+c.tag+'</span><h3>'+c.name+'</h3><p>'+c.desc+'</p></div><div class="course-card-body"><div class="course-info"><div class="info-item"><strong>'+c.duration+' 分鐘</strong>課程時長</div><div class="info-item"><strong>'+c.capacity+'</strong>班級人數</div></div></div></div>';
   }).join('');
 }
 
@@ -1013,20 +810,10 @@ function renderPlanSelect() {
     if (p.perClass) {
       var perClassColor = (p.highlight && isSelected) ? 'var(--accent)' : 'var(--sage)';
       var divisor = p.id === 'group_4' ? 4 : p.id === 'group_8' ? 8 : 1;
-      perClassDiv = '<div style="font-size:11px;color:' + perClassColor + ';margin-top:3px;">平均 $' + Math.round(p.price / divisor) + ' / 堂</div>';
+      perClassDiv = '<div style="font-size:11px;color:'+perClassColor+';margin-top:3px;">平均 $'+Math.round(p.price/divisor)+' / 堂</div>';
     }
     var badge = p.highlight ? '<div style="font-size:10px;padding:3px 8px;border-radius:20px;background:var(--accent);color:var(--charcoal);font-weight:600;flex-shrink:0;">最優惠</div>' : '';
-    return '<div class="plan-option" data-plan-id="' + p.id + '" style="display:flex;align-items:center;gap:16px;padding:16px 20px;border:2px solid ' + border + ';border-radius:14px;cursor:pointer;background:' + bg + ';transition:all 0.18s;">'
-      + '<div style="flex:1;">'
-      + '<div style="font-size:15px;font-weight:500;color:' + labelColor + ';">' + p.label + ' <span style="font-size:13px;font-weight:400;color:' + subColor + ';">· ' + p.sublabel + '</span></div>'
-      + perClassDiv
-      + '</div>'
-      + '<div style="text-align:right;">'
-      + '<div style="font-family:Georgia,serif;font-size:28px;color:' + priceColor + ';">$' + p.price.toLocaleString() + '</div>'
-      + '<div style="font-size:11px;color:' + unitColor + ';">' + p.unit + '</div>'
-      + '</div>'
-      + badge
-      + '</div>';
+    return '<div class="plan-option" data-plan-id="'+p.id+'" style="display:flex;align-items:center;gap:16px;padding:16px 20px;border:2px solid '+border+';border-radius:14px;cursor:pointer;background:'+bg+';transition:all 0.18s;"><div style="flex:1;"><div style="font-size:15px;font-weight:500;color:'+labelColor+';">'+p.label+' <span style="font-size:13px;font-weight:400;color:'+subColor+';">· '+p.sublabel+'</span></div>'+perClassDiv+'</div><div style="text-align:right;"><div style="font-family:Georgia,serif;font-size:28px;color:'+priceColor+';">$'+p.price.toLocaleString()+'</div><div style="font-size:11px;color:'+unitColor+';">'+p.unit+'</div></div>'+badge+'</div>';
   }).join('');
 }
 
@@ -1037,7 +824,7 @@ function selectPlan(id) {
   var card = document.getElementById('calendar-booking-card');
   card.style.display = 'block';
   var hints = {
-    pilates_single: 'Pilates 單堂：點選月曆上的 Pilates 時段，每點一堂 $' + PLAN_PRICES.pilates_single,
+    pilates_single: 'Pilates 單堂：點選月曆上的 Pilates 時段，每點一堂 $'+PLAN_PRICES.pilates_single,
     group_single: '單堂方案：點選任一團體課程時段',
     group_4: '四堂方案：請選擇 4 個團體課程時段',
     group_8: '八堂方案：請選擇 8 個團體課程時段',
@@ -1057,10 +844,7 @@ function renderBookingCal() {
   var monthNames = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
   title.textContent = y + ' 年 ' + monthNames[m];
 
-  var headers = ['日','一','二','三','四','五','六'].map(function(d) {
-    return '<div class="bcal-header">' + d + '</div>';
-  }).join('');
-
+  var headers = ['日','一','二','三','四','五','六'].map(function(d){ return '<div class="bcal-header">'+d+'</div>'; }).join('');
   var firstDay = new Date(y, m, 1).getDay();
   var daysInMonth = new Date(y, m+1, 0).getDate();
   var colorMap = { pilates:'#7B5EA7', strength:'#3A7CA5', cardio:'#A5763A', gymnastics:'#3A8A6A', weightlifting:'#3A8A6A' };
@@ -1068,65 +852,39 @@ function renderBookingCal() {
   var cells = '';
   var prevDays = new Date(y, m, 0).getDate();
   for (var pi = firstDay - 1; pi >= 0; pi--) {
-    cells += '<div class="bcal-day other-month"><div class="bcal-day-num">' + (prevDays - pi) + '</div></div>';
+    cells += '<div class="bcal-day other-month"><div class="bcal-day-num">'+(prevDays-pi)+'</div></div>';
   }
-
   for (var d = 1; d <= daysInMonth; d++) {
     var dateObj = new Date(y, m, d);
     var dayKey = getDayKey(dateObj.getDay());
-    var dateStr = y + '-' + String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    var dateStr = y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
     var isToday = today.getFullYear()===y && today.getMonth()===m && today.getDate()===d;
     var slots = WEEKLY_SCHEDULE[dayKey] || [];
-
     var slotHTML = '';
     for (var si = 0; si < slots.length; si++) {
       var s = slots[si];
       var course = null;
-      for (var ci = 0; ci < COURSES.length; ci++) {
-        if (COURSES[ci].id === s.courseId) { course = COURSES[ci]; break; }
-      }
+      for (var ci = 0; ci < COURSES.length; ci++) { if (COURSES[ci].id===s.courseId) { course=COURSES[ci]; break; } }
       if (!course) continue;
-      var allowed = selectedPlan && selectedPlan.allowedCourseIds && selectedPlan.allowedCourseIds.indexOf(s.courseId) >= 0;
-      var slotKey = dateStr + '|' + si;
+      var allowed = selectedPlan && selectedPlan.allowedCourseIds && selectedPlan.allowedCourseIds.indexOf(s.courseId)>=0;
+      var slotKey = dateStr+'|'+si;
       var isBooked = false;
-      for (var bi = 0; bi < selectedBookSlots.length; bi++) {
-        if (selectedBookSlots[bi].key === slotKey) { isBooked = true; break; }
-      }
-      var bg = isBooked ? '#2A2825' : (colorMap[s.courseId] || '#888');
+      for (var bi = 0; bi < selectedBookSlots.length; bi++) { if (selectedBookSlots[bi].key===slotKey) { isBooked=true; break; } }
+      var bg = isBooked ? '#2A2825' : (colorMap[s.courseId]||'#888');
       var shadow = isBooked ? 'box-shadow:0 0 0 2px var(--accent);' : '';
       var opacity = allowed ? '1' : '0.28';
-      var cls = 'bcal-slot' + (allowed ? ' selectable' : ' locked');
-      slotHTML += '<div class="' + cls + '"'
-        + ' data-slot-key="' + slotKey + '"'
-        + ' data-date="' + dateStr + '"'
-        + ' data-course-id="' + s.courseId + '"'
-        + ' data-course-name="' + course.name.replace(/"/g,'&quot;') + '"'
-        + ' data-time="' + s.time + '"'
-        + ' data-color-class="' + course.colorClass + '"'
-        + ' data-color="' + (colorMap[s.courseId] || '#888') + '"'
-        + ' data-allowed="' + (allowed ? '1' : '0') + '"'
-        + ' style="background:' + bg + ';color:#fff;opacity:' + opacity + ';' + shadow + '"'
-        + ' title="' + course.name + ' ' + s.time + '">'
-        + '<div class="slot-name">' + s.name + '</div>'
-        + '<div class="slot-time">' + s.time + '</div>'
-        + (isBooked ? '<div style="font-size:9px;margin-top:1px;">✓ 已選</div>' : '')
-        + '</div>';
+      var cls = 'bcal-slot'+(allowed?' selectable':' locked');
+      slotHTML += '<div class="'+cls+'" data-slot-key="'+slotKey+'" data-date="'+dateStr+'" data-course-id="'+s.courseId+'" data-course-name="'+course.name.replace(/"/g,'&quot;')+'" data-time="'+s.time+'" data-color-class="'+course.colorClass+'" data-color="'+(colorMap[s.courseId]||'#888')+'" data-allowed="'+(allowed?'1':'0')+'" style="background:'+bg+';color:#fff;opacity:'+opacity+';'+shadow+'" title="'+course.name+' '+s.time+'"><div class="slot-name">'+s.name+'</div><div class="slot-time">'+s.time+'</div>'+(isBooked?'<div style="font-size:9px;margin-top:1px;">✓ 已選</div>':'')+'</div>';
     }
-    cells += '<div class="bcal-day' + (isToday ? ' today' : '') + '"><div class="bcal-day-num">' + d + '</div>' + slotHTML + '</div>';
+    cells += '<div class="bcal-day'+(isToday?' today':'')+'"><div class="bcal-day-num">'+d+'</div>'+slotHTML+'</div>';
   }
-
   var remaining = 42 - firstDay - daysInMonth;
-  for (var ri = 1; ri <= remaining; ri++) {
-    cells += '<div class="bcal-day other-month"><div class="bcal-day-num">' + ri + '</div></div>';
-  }
+  for (var ri = 1; ri <= remaining; ri++) { cells += '<div class="bcal-day other-month"><div class="bcal-day-num">'+ri+'</div></div>'; }
 
   grid.innerHTML = headers + cells;
 
-  var newGrid = grid.cloneNode(false);
-  newGrid.innerHTML = grid.innerHTML;
-  grid.parentNode.replaceChild(newGrid, grid);
-
-  newGrid.addEventListener('click', function(e) {
+  // ★ 修正1：用 onclick 取代每次 render 都 addEventListener，避免重複綁定
+  grid.onclick = function(e) {
     var slot = e.target.closest('.bcal-slot');
     if (!slot || slot.getAttribute('data-allowed') !== '1') return;
     toggleBookSlot(
@@ -1138,23 +896,19 @@ function renderBookingCal() {
       slot.getAttribute('data-color-class'),
       slot.getAttribute('data-color')
     );
-  });
+  };
 }
 
 function toggleBookSlot(key, dateStr, courseId, courseName, time, colorClass, color) {
   if (!selectedPlan) return;
   var idx = -1;
-  for (var i = 0; i < selectedBookSlots.length; i++) {
-    if (selectedBookSlots[i].key === key) { idx = i; break; }
-  }
+  for (var i = 0; i < selectedBookSlots.length; i++) { if (selectedBookSlots[i].key===key) { idx=i; break; } }
   if (idx > -1) {
     selectedBookSlots.splice(idx, 1);
   } else {
     var limit = { pilates_single:99, group_single:1, group_4:4, group_8:8, unlimited:99 };
     var maxSlots = limit[selectedPlan.id] || 99;
-    if (selectedBookSlots.length >= maxSlots) {
-      showToast('此方案最多可選 ' + maxSlots + ' 堂'); return;
-    }
+    if (selectedBookSlots.length >= maxSlots) { showToast('此方案最多可選 '+maxSlots+' 堂'); return; }
     selectedBookSlots.push({ key:key, dateStr:dateStr, courseId:courseId, courseName:courseName, time:time, colorClass:colorClass, color:color });
   }
   renderBookingCal();
@@ -1162,66 +916,44 @@ function toggleBookSlot(key, dateStr, courseId, courseName, time, colorClass, co
 }
 
 function changeBookMonth(dir) {
-  bookMonth = new Date(bookMonth.getFullYear(), bookMonth.getMonth() + dir, 1);
+  bookMonth = new Date(bookMonth.getFullYear(), bookMonth.getMonth()+dir, 1);
   renderBookingCal();
 }
 
 function updateSummary() {
   var container = document.getElementById('summary-items');
   var totalEl = document.getElementById('total-price');
-  if (!selectedPlan) {
-    container.innerHTML = '<div class="summary-empty">尚未選擇方案</div>';
-    totalEl.textContent = '$0'; return;
-  }
+  if (!selectedPlan) { container.innerHTML='<div class="summary-empty">尚未選擇方案</div>'; totalEl.textContent='$0'; return; }
   var total = 0, itemsHTML = '';
   if (selectedPlan.id === 'pilates_single') {
-    if (!selectedBookSlots.length) {
-      container.innerHTML = '<div class="summary-empty">請從月曆選擇 Pilates 時段</div>';
-      totalEl.textContent = '$0'; return;
-    }
-    selectedBookSlots.forEach(function(s) {
-      total += PLAN_PRICES.pilates_single;
-      itemsHTML += '<div class="summary-item"><div class="item-info">Pilates<small>' + s.dateStr + ' ' + s.time + '</small></div><div class="item-price">$' + PLAN_PRICES.pilates_single + '</div></div>';
-    });
+    if (!selectedBookSlots.length) { container.innerHTML='<div class="summary-empty">請從月曆選擇 Pilates 時段</div>'; totalEl.textContent='$0'; return; }
+    selectedBookSlots.forEach(function(s) { total+=PLAN_PRICES.pilates_single; itemsHTML+='<div class="summary-item"><div class="item-info">Pilates<small>'+s.dateStr+' '+s.time+'</small></div><div class="item-price">$'+PLAN_PRICES.pilates_single+'</div></div>'; });
   } else if (selectedPlan.id === 'group_single') {
-    if (!selectedBookSlots.length) {
-      container.innerHTML = '<div class="summary-empty">請從月曆選擇一個時段</div>';
-      totalEl.textContent = '$0'; return;
-    }
+    if (!selectedBookSlots.length) { container.innerHTML='<div class="summary-empty">請從月曆選擇一個時段</div>'; totalEl.textContent='$0'; return; }
     total = PLAN_PRICES.group_single;
     var s0 = selectedBookSlots[0];
-    itemsHTML = '<div class="summary-item"><div class="item-info">' + s0.courseName + '<small>' + s0.dateStr + ' ' + s0.time + '</small></div><div class="item-price">$' + total + '</div></div>';
+    itemsHTML = '<div class="summary-item"><div class="item-info">'+s0.courseName+'<small>'+s0.dateStr+' '+s0.time+'</small></div><div class="item-price">$'+total+'</div></div>';
   } else {
     total = selectedPlan.price;
-    var needed = selectedPlan.id === 'group_4' ? 4 : selectedPlan.id === 'group_8' ? 8 : null;
-    itemsHTML = '<div class="summary-item"><div class="item-info">' + selectedPlan.label + '<small>' + selectedPlan.sublabel + '</small></div><div class="item-price">$' + total.toLocaleString() + '</div></div>';
-    selectedBookSlots.forEach(function(s) {
-      itemsHTML += '<div class="summary-item" style="padding:6px 0;"><div class="item-info" style="font-size:12px;color:rgba(245,240,232,0.6);">✦ ' + s.courseName + ' · ' + s.dateStr + ' ' + s.time + '</div></div>';
-    });
-    if (needed && selectedBookSlots.length < needed) {
-      itemsHTML += '<div style="font-size:11px;color:var(--accent);padding:6px 0;">還需選擇 ' + (needed - selectedBookSlots.length) + ' 堂</div>';
-    }
+    var needed = selectedPlan.id==='group_4'?4:selectedPlan.id==='group_8'?8:null;
+    itemsHTML = '<div class="summary-item"><div class="item-info">'+selectedPlan.label+'<small>'+selectedPlan.sublabel+'</small></div><div class="item-price">$'+total.toLocaleString()+'</div></div>';
+    selectedBookSlots.forEach(function(s) { itemsHTML+='<div class="summary-item" style="padding:6px 0;"><div class="item-info" style="font-size:12px;color:rgba(245,240,232,0.6);">✦ '+s.courseName+' · '+s.dateStr+' '+s.time+'</div></div>'; });
+    if (needed && selectedBookSlots.length < needed) { itemsHTML+='<div style="font-size:11px;color:var(--accent);padding:6px 0;">還需選擇 '+(needed-selectedBookSlots.length)+' 堂</div>'; }
   }
   container.innerHTML = itemsHTML;
-  totalEl.textContent = '$' + total.toLocaleString();
+  totalEl.textContent = '$'+total.toLocaleString();
 }
 
 function showConfirmModal(summaryHTML, onConfirm) {
   document.getElementById('confirm-summary-content').innerHTML = summaryHTML;
-  var overlay = document.getElementById('confirm-modal');
-  overlay.classList.add('show');
+  document.getElementById('confirm-modal').classList.add('show');
   var yesBtn = document.getElementById('btn-confirm-yes');
   var newBtn = yesBtn.cloneNode(true);
   yesBtn.parentNode.replaceChild(newBtn, yesBtn);
-  newBtn.addEventListener('click', function() {
-    closeConfirmModal();
-    onConfirm();
-  });
+  newBtn.addEventListener('click', function() { closeConfirmModal(); onConfirm(); });
 }
 
-function closeConfirmModal() {
-  document.getElementById('confirm-modal').classList.remove('show');
-}
+function closeConfirmModal() { document.getElementById('confirm-modal').classList.remove('show'); }
 
 function submitBooking() {
   var name  = document.getElementById('b-name').value.trim();
@@ -1233,56 +965,52 @@ function submitBooking() {
 
   if (!name || !email) { showToast('請填寫姓名與 Email'); return; }
   if (!selectedPlan) { showToast('請選擇方案'); return; }
-  if (!acct || acct.length !== 5 || !/^\d+$/.test(acct)) {
-    showToast('請填寫正確的帳號後五碼（5位數字）'); return;
-  }
+  if (!acct || acct.length!==5 || !/^\d+$/.test(acct)) { showToast('請填寫正確的帳號後五碼（5位數字）'); return; }
   var needed = { pilates_single:1, group_single:1, group_4:4, group_8:8, unlimited:1 };
-  if (selectedBookSlots.length < (needed[selectedPlan.id] || 1)) {
-    showToast('請至少選擇 ' + (needed[selectedPlan.id] || 1) + ' 個時段'); return;
-  }
+  if (selectedBookSlots.length < (needed[selectedPlan.id]||1)) { showToast('請至少選擇 '+(needed[selectedPlan.id]||1)+' 個時段'); return; }
 
-  var isPilates = selectedPlan.id === 'pilates_single';
-  var isSingle  = selectedPlan.id === 'group_single';
-  var totalPrice = isPilates ? PLAN_PRICES.pilates_single * selectedBookSlots.length : selectedPlan.price;
+  var isPilates = selectedPlan.id==='pilates_single';
+  var isSingle  = selectedPlan.id==='group_single';
+  var totalPrice = isPilates ? PLAN_PRICES.pilates_single*selectedBookSlots.length : selectedPlan.price;
 
-  var slotsText = selectedBookSlots.map(function(s) {
-    return '&nbsp;&nbsp;· ' + s.courseName + '&nbsp; ' + s.dateStr + ' ' + s.time;
-  }).join('<br>');
-  var summaryHTML = '<strong>' + name + '</strong> &nbsp;·&nbsp; ' + email + '<br>'
-    + '方案：' + selectedPlan.label + ' · ' + selectedPlan.sublabel + '<br>'
-    + '帳號後五碼：<strong style="font-family:monospace;letter-spacing:2px;">' + acct + '</strong><br>'
-    + '費用：<strong style="color:var(--accent-dark);">$' + totalPrice.toLocaleString() + '</strong><br>'
-    + (slotsText ? '<br>選擇時段：<br>' + slotsText : '');
+  var slotsText = selectedBookSlots.map(function(s){ return '&nbsp;&nbsp;· '+s.courseName+'&nbsp; '+s.dateStr+' '+s.time; }).join('<br>');
+  var summaryHTML = '<strong>'+name+'</strong> &nbsp;·&nbsp; '+email+'<br>'
+    +'方案：'+selectedPlan.label+' · '+selectedPlan.sublabel+'<br>'
+    +'帳號後五碼：<strong style="font-family:monospace;letter-spacing:2px;">'+acct+'</strong><br>'
+    +'費用：<strong style="color:var(--accent-dark);">$'+totalPrice.toLocaleString()+'</strong><br>'
+    +(slotsText?'<br>選擇時段：<br>'+slotsText:'');
 
-  showConfirmModal(summaryHTML, function() {
-    doSubmitBooking(name, email, phone, level, note, acct, isPilates, isSingle, totalPrice);
-  });
+  showConfirmModal(summaryHTML, function() { doSubmitBooking(name,email,phone,level,note,acct,isPilates,isSingle,totalPrice); });
 }
 
 function doSubmitBooking(name, email, phone, level, note, acct, isPilates, isSingle, totalPrice) {
   var orderId = Date.now();
-
   selectedBookSlots.forEach(function(s, idx) {
     MY_BOOKINGS.push({
-      id: orderId + idx, orderId: orderId, orderIdx: idx,
+      id:orderId+idx, orderId:orderId, orderIdx:idx,
       name:name, email:email, phone:phone, level:level, note:note, acct:acct,
-      course: s.courseName, date: s.dateStr, time: s.time,
-      colorClass: s.colorClass, color: s.color,
-      status: 'pending', planId: selectedPlan.id, planLabel: selectedPlan.sublabel,
-      price: (isPilates || isSingle) ? PLAN_PRICES[selectedPlan.id] : (idx === 0 ? totalPrice : -1),
-      totalSlots: selectedBookSlots.length,
+      course:s.courseName, date:s.dateStr, time:s.time,
+      colorClass:s.colorClass, color:s.color,
+      status:'pending', planId:selectedPlan.id, planLabel:selectedPlan.sublabel,
+      price:(isPilates||isSingle)?PLAN_PRICES[selectedPlan.id]:(idx===0?totalPrice:-1),
+      totalSlots:selectedBookSlots.length,
     });
   });
 
   var payload = {
-    orderId: orderId, name:name, email:email, phone:phone, level:level, note:note, acct:acct,
-    planId: selectedPlan.id, planLabel: selectedPlan.sublabel,
-    price: totalPrice,
-    slots: selectedBookSlots.map(function(s){ return { course:s.courseName, date:s.dateStr, time:s.time }; })
+    orderId:orderId, name:name, email:email, phone:phone, level:level, note:note, acct:acct,
+    planId:selectedPlan.id, planLabel:selectedPlan.sublabel, price:totalPrice,
+    slots:selectedBookSlots.map(function(s){ return {course:s.courseName,date:s.dateStr,time:s.time}; })
   };
 
+  // ★ 修正2：加 mode:'no-cors' 解決跨域問題，Content-Type 改 text/plain
   if (APPS_SCRIPT_URL) {
-    fetch(APPS_SCRIPT_URL, { method:'POST', body:JSON.stringify(payload) }).catch(function(){});
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
+    }).catch(function(err) { console.warn('Google Sheets 連線失敗：', err); });
   }
 
   showToast('預約送出！請完成轉帳，確認後我們會與你聯繫', 'success');
@@ -1302,640 +1030,334 @@ function renderCalendar() {
   var y = currentMonth.getFullYear();
   var m = currentMonth.getMonth();
   var months = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
-  title.textContent = y + ' 年 ' + months[m];
-
+  title.textContent = y+' 年 '+months[m];
   var headers = ['日','一','二','三','四','五','六'].map(function(d){ return '<div class="cal-header">'+d+'</div>'; }).join('');
-  var firstDay = new Date(y, m, 1).getDay();
-  var daysInMonth = new Date(y, m+1, 0).getDate();
-
+  var firstDay = new Date(y,m,1).getDay();
+  var daysInMonth = new Date(y,m+1,0).getDate();
   var cells = '';
-  var prevDays = new Date(y, m, 0).getDate();
-  for (var i = firstDay - 1; i >= 0; i--) {
-    cells += '<div class="cal-day other-month"><div class="cal-day-num">' + (prevDays - i) + '</div></div>';
+  var prevDays = new Date(y,m,0).getDate();
+  for (var i=firstDay-1;i>=0;i--) cells+='<div class="cal-day other-month"><div class="cal-day-num">'+(prevDays-i)+'</div></div>';
+  for (var d=1;d<=daysInMonth;d++) {
+    var dateStr=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var isToday=today.getFullYear()===y&&today.getMonth()===m&&today.getDate()===d;
+    var dayBookings=MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.price!==0; });
+    var events=dayBookings.map(function(b){ return '<div class="cal-event '+b.colorClass+'">'+b.course.slice(0,4)+' '+b.time+'</div>'; }).join('');
+    cells+='<div class="cal-day'+(isToday?' today':'')+'"><div class="cal-day-num">'+d+'</div>'+events+'</div>';
   }
-  for (var d = 1; d <= daysInMonth; d++) {
-    var dateStr = y + '-' + String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
-    var isToday = today.getFullYear()===y && today.getMonth()===m && today.getDate()===d;
-    var dayBookings = MY_BOOKINGS.filter(function(b){ return b.date === dateStr && b.price !== 0; });
-    var events = dayBookings.map(function(b){ return '<div class="cal-event '+b.colorClass+'">'+b.course.slice(0,4)+' '+b.time+'</div>'; }).join('');
-    cells += '<div class="cal-day'+(isToday?' today':'')+'"><div class="cal-day-num">'+d+'</div>'+events+'</div>';
-  }
-  var remaining = 42 - firstDay - daysInMonth;
-  for (var ri = 1; ri <= remaining; ri++) {
-    cells += '<div class="cal-day other-month"><div class="cal-day-num">'+ri+'</div></div>';
-  }
-  grid.innerHTML = headers + cells;
+  var remaining=42-firstDay-daysInMonth;
+  for (var ri=1;ri<=remaining;ri++) cells+='<div class="cal-day other-month"><div class="cal-day-num">'+ri+'</div></div>';
+  grid.innerHTML=headers+cells;
 }
 
 function changeMonth(dir) {
-  currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + dir, 1);
+  currentMonth=new Date(currentMonth.getFullYear(),currentMonth.getMonth()+dir,1);
   renderCalendar(); renderBookingList();
 }
 
 function renderBookingList() {
-  var y = currentMonth.getFullYear();
-  var m = currentMonth.getMonth();
-  var list = document.getElementById('booking-list');
-  var filtered = MY_BOOKINGS.filter(function(b) {
-    var d = new Date(b.date);
-    return d.getFullYear()===y && d.getMonth()===m && b.price !== 0;
-  }).sort(function(a,b) { return a.date.localeCompare(b.date); });
-
-  if (!filtered.length) {
-    list.innerHTML = '<div style="color:var(--warm-grey);font-size:14px;padding:20px 0;">本月尚無預約課程</div>';
-    return;
-  }
-  list.innerHTML = filtered.map(function(b) {
-    var priceDisplay = b.price === -1
-      ? '<span style="font-size:12px;color:var(--sage);">方案內含</span>'
-      : '$' + b.price.toLocaleString();
-    var statusLabel = b.status === 'confirmed' ? '✓ 已確認' : '⏳ 待確認';
-    return '<div class="booking-item">'
-      + '<div class="booking-item-dot" style="background:' + (b.color||'#999') + '"></div>'
-      + '<div class="booking-item-info"><strong>' + b.course + '</strong><small>' + b.date + ' · ' + b.time + ' · ' + (b.planLabel||'單堂') + '</small></div>'
-      + '<span class="booking-status status-' + b.status + '">' + statusLabel + '</span>'
-      + '<div class="booking-item-price">' + priceDisplay + '</div>'
-      + '<button class="btn-cancel" data-cancel-id="' + b.id + '">取消</button>'
-      + '</div>';
+  var y=currentMonth.getFullYear(); var m=currentMonth.getMonth();
+  var list=document.getElementById('booking-list');
+  var filtered=MY_BOOKINGS.filter(function(b){ var d=new Date(b.date); return d.getFullYear()===y&&d.getMonth()===m&&b.price!==0; }).sort(function(a,b){ return a.date.localeCompare(b.date); });
+  if (!filtered.length) { list.innerHTML='<div style="color:var(--warm-grey);font-size:14px;padding:20px 0;">本月尚無預約課程</div>'; return; }
+  list.innerHTML=filtered.map(function(b){
+    var priceDisplay=b.price===-1?'<span style="font-size:12px;color:var(--sage);">方案內含</span>':'$'+b.price.toLocaleString();
+    var statusLabel=b.status==='confirmed'?'✓ 已確認':'⏳ 待確認';
+    return '<div class="booking-item"><div class="booking-item-dot" style="background:'+(b.color||'#999')+'"></div><div class="booking-item-info"><strong>'+b.course+'</strong><small>'+b.date+' · '+b.time+' · '+(b.planLabel||'單堂')+'</small></div><span class="booking-status status-'+b.status+'">'+statusLabel+'</span><div class="booking-item-price">'+priceDisplay+'</div><button class="btn-cancel" data-cancel-id="'+b.id+'">取消</button></div>';
   }).join('');
-
-  list.addEventListener('click', function(e) {
-    var btn = e.target.closest('[data-cancel-id]');
-    if (btn) cancelBooking(parseInt(btn.getAttribute('data-cancel-id')));
-  });
+  list.onclick = function(e) { var btn=e.target.closest('[data-cancel-id]'); if(btn) cancelBooking(parseInt(btn.getAttribute('data-cancel-id'))); };
 }
 
 function cancelBooking(id) {
   if (!confirm('確定要取消這堂課嗎？')) return;
-  MY_BOOKINGS = MY_BOOKINGS.filter(function(b) { return b.id !== id; });
-  renderCalendar(); renderBookingList();
-  showToast('已取消預約');
+  MY_BOOKINGS=MY_BOOKINGS.filter(function(b){ return b.id!==id; });
+  renderCalendar(); renderBookingList(); showToast('已取消預約');
 }
 
 // ══════════════════════════════════════════
 // ADMIN
 // ══════════════════════════════════════════
-var reminderToggles = { '24h':true, '2h':true, 'weekly':false };
+var reminderToggles={'24h':true,'2h':true,'weekly':false};
 
 function showAdminLogin() {
   document.getElementById('admin-modal').classList.add('show');
-  document.getElementById('admin-pw').value = '';
-  document.getElementById('admin-pw-error').textContent = '';
-  setTimeout(function() { document.getElementById('admin-pw').focus(); }, 200);
+  document.getElementById('admin-pw').value='';
+  document.getElementById('admin-pw-error').textContent='';
+  setTimeout(function(){ document.getElementById('admin-pw').focus(); },200);
 }
-function closeAdminModal() {
-  document.getElementById('admin-modal').classList.remove('show');
-}
+function closeAdminModal() { document.getElementById('admin-modal').classList.remove('show'); }
 function checkAdminPw() {
-  var pw = document.getElementById('admin-pw').value;
-  if (pw === ADMIN_PASSWORD) {
-    closeAdminModal();
-    showPage('admin');
-    showAdminTab('dashboard');
-  } else {
-    document.getElementById('admin-pw-error').textContent = '密碼錯誤，請再試一次';
-    document.getElementById('admin-pw').select();
-  }
+  var pw=document.getElementById('admin-pw').value;
+  if (pw===ADMIN_PASSWORD) { closeAdminModal(); showPage('admin'); showAdminTab('dashboard'); }
+  else { document.getElementById('admin-pw-error').textContent='密碼錯誤，請再試一次'; document.getElementById('admin-pw').select(); }
 }
 
-var slotPopupVisible = false;
-function showSlotPopup(dateStr, slotIdx, anchorEl) {
-  var existing = document.getElementById('slot-popup');
+var slotPopupVisible=false;
+function showSlotPopup(dateStr,slotIdx,anchorEl) {
+  var existing=document.getElementById('slot-popup');
   if (existing) existing.remove();
-  if (slotPopupVisible) { slotPopupVisible = false; return; }
-
-  var dateObj = new Date(dateStr + 'T00:00:00');
-  var dayKey = getDayKey(dateObj.getDay());
-  var slot = (WEEKLY_SCHEDULE[dayKey]||[])[slotIdx];
+  if (slotPopupVisible) { slotPopupVisible=false; return; }
+  var dateObj=new Date(dateStr+'T00:00:00');
+  var dayKey=getDayKey(dateObj.getDay());
+  var slot=(WEEKLY_SCHEDULE[dayKey]||[])[slotIdx];
   if (!slot) return;
-
-  var students = MY_BOOKINGS.filter(function(b) { return b.date === dateStr && b.time === slot.time && b.price !== 0; });
-  var course = null;
-  for (var ci = 0; ci < COURSES.length; ci++) { if (COURSES[ci].id === slot.courseId) { course = COURSES[ci]; break; } }
-  var isOpen = students.length >= 2;
-
-  var dt = dateStr.replace(/-/g,'');
-  var timeParts = slot.time.split(':'); var hh = timeParts[0]; var mm = timeParts[1];
-  var startDt = dt + 'T' + hh + mm + '00';
-  var endH = String(parseInt(hh) + (parseInt(mm)+50>=60 ? 1 : 0)).padStart(2,'0');
-  var endM = String((parseInt(mm)+50)%60).padStart(2,'0');
-  var endDt = dt + 'T' + endH + endM + '00';
-  var courseName2 = course ? course.name : '';
-  var studentDetails = students.map(function(s){ return s.name + ' <' + s.email + '>'; }).join('\n');
-  var gcalUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-    + '&text=' + encodeURIComponent('SYLVIEFITNESS: ' + courseName2)
-    + '&dates=' + startDt + '/' + endDt
-    + '&details=' + encodeURIComponent(studentDetails);
-
-  var openBg    = isOpen ? '#E8F5EB' : '#FFF3E0';
-  var openColor = isOpen ? 'var(--success)' : '#E08C1A';
-  var openLabel = isOpen ? '✓ 開課' : '未達人數';
-
-  var studentsHtml = '';
-  if (students.length === 0) {
-    studentsHtml = '<div style="font-size:13px;color:var(--warm-grey);padding:8px 0;">尚無學員預約</div>';
-  } else {
-    students.forEach(function(s) {
-      var sBg    = s.status === 'confirmed' ? '#E8F5EB' : '#FFF3E0';
-      var sColor = s.status === 'confirmed' ? 'var(--success)' : '#E08C1A';
-      var sLabel = s.status === 'confirmed' ? '已確認' : '待確認';
-      studentsHtml += '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">'
-        + '<div style="width:28px;height:28px;background:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;">' + (s.name ? s.name.charAt(0) : '?') + '</div>'
-        + '<div><div style="font-size:13px;font-weight:500;">' + (s.name||'—') + '</div>'
-        + '<div style="font-size:11px;color:var(--warm-grey);">' + (s.email||'—') + '</div></div>'
-        + '<span style="margin-left:auto;font-size:10px;padding:2px 7px;border-radius:20px;background:' + sBg + ';color:' + sColor + ';">' + sLabel + '</span>'
-        + '</div>';
-    });
-  }
-
-  var popup = document.createElement('div');
-  popup.id = 'slot-popup';
-  popup.style.cssText = 'position:fixed;z-index:300;background:white;border:1px solid var(--border);border-radius:14px;padding:20px;width:280px;box-shadow:0 8px 40px rgba(28,26,24,0.18);';
-  popup.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">'
-    + '<div><div style="font-weight:600;font-size:15px;">' + courseName2 + '</div>'
-    + '<div style="font-size:12px;color:var(--warm-grey);">' + dateStr + ' · ' + slot.time + '</div></div>'
-    + '<span style="padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:' + openBg + ';color:' + openColor + ';">' + openLabel + '</span></div>'
-    + studentsHtml
-    + '<a href="' + gcalUrl + '" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;padding:10px;background:var(--charcoal);color:var(--cream);border-radius:10px;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:0.5px;">'
-    + '<span>📅</span> 加入 Google 日曆</a>'
-    + '<button id="slot-popup-close" style="width:100%;margin-top:8px;padding:8px;border:1px solid var(--border);border-radius:10px;background:none;font-size:12px;color:var(--warm-grey);cursor:pointer;">關閉</button>';
-
+  var students=MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.time===slot.time&&b.price!==0; });
+  var course=null;
+  for (var ci=0;ci<COURSES.length;ci++) { if(COURSES[ci].id===slot.courseId){course=COURSES[ci];break;} }
+  var isOpen=students.length>=2;
+  var dt=dateStr.replace(/-/g,'');
+  var timeParts=slot.time.split(':'); var hh=timeParts[0]; var mm=timeParts[1];
+  var startDt=dt+'T'+hh+mm+'00';
+  var endH=String(parseInt(hh)+(parseInt(mm)+50>=60?1:0)).padStart(2,'0');
+  var endM=String((parseInt(mm)+50)%60).padStart(2,'0');
+  var endDt=dt+'T'+endH+endM+'00';
+  var courseName2=course?course.name:'';
+  var studentDetails=students.map(function(s){ return s.name+' <'+s.email+'>'; }).join('\n');
+  var gcalUrl='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('SYLVIEFITNESS: '+courseName2)+'&dates='+startDt+'/'+endDt+'&details='+encodeURIComponent(studentDetails);
+  var openBg=isOpen?'#E8F5EB':'#FFF3E0';
+  var openColor=isOpen?'var(--success)':'#E08C1A';
+  var openLabel=isOpen?'✓ 開課':'未達人數';
+  var studentsHtml='';
+  if (!students.length) { studentsHtml='<div style="font-size:13px;color:var(--warm-grey);padding:8px 0;">尚無學員預約</div>'; }
+  else { students.forEach(function(s){ var sBg=s.status==='confirmed'?'#E8F5EB':'#FFF3E0'; var sColor=s.status==='confirmed'?'var(--success)':'#E08C1A'; var sLabel=s.status==='confirmed'?'已確認':'待確認'; studentsHtml+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);"><div style="width:28px;height:28px;background:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;">'+(s.name?s.name.charAt(0):'?')+'</div><div><div style="font-size:13px;font-weight:500;">'+(s.name||'—')+'</div><div style="font-size:11px;color:var(--warm-grey);">'+(s.email||'—')+'</div></div><span style="margin-left:auto;font-size:10px;padding:2px 7px;border-radius:20px;background:'+sBg+';color:'+sColor+';">'+sLabel+'</span></div>'; }); }
+  var popup=document.createElement('div');
+  popup.id='slot-popup';
+  popup.style.cssText='position:fixed;z-index:300;background:white;border:1px solid var(--border);border-radius:14px;padding:20px;width:280px;box-shadow:0 8px 40px rgba(28,26,24,0.18);';
+  popup.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><div><div style="font-weight:600;font-size:15px;">'+courseName2+'</div><div style="font-size:12px;color:var(--warm-grey);">'+dateStr+' · '+slot.time+'</div></div><span style="padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:'+openBg+';color:'+openColor+';">'+openLabel+'</span></div>'+studentsHtml+'<a href="'+gcalUrl+'" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;padding:10px;background:var(--charcoal);color:var(--cream);border-radius:10px;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:0.5px;"><span>📅</span> 加入 Google 日曆</a><button id="slot-popup-close" style="width:100%;margin-top:8px;padding:8px;border:1px solid var(--border);border-radius:10px;background:none;font-size:12px;color:var(--warm-grey);cursor:pointer;">關閉</button>';
   document.body.appendChild(popup);
-  document.getElementById('slot-popup-close').addEventListener('click', function() {
-    var p = document.getElementById('slot-popup');
-    if (p) p.remove();
-    slotPopupVisible = false;
-  });
-  slotPopupVisible = true;
-
-  var rect = anchorEl.getBoundingClientRect();
-  var left = rect.left + window.scrollX;
-  var top = rect.bottom + window.scrollY + 6;
-  if (left + 280 > window.innerWidth) left = window.innerWidth - 295;
-  if (top + 350 > window.innerHeight + window.scrollY) top = rect.top + window.scrollY - 360;
-  popup.style.left = left + 'px';
-  popup.style.top = top + 'px';
-
-  setTimeout(function() {
-    document.addEventListener('click', function dismiss(e) {
-      var sp = document.getElementById('slot-popup');
-      if (sp && !sp.contains(e.target)) {
-        sp.remove(); slotPopupVisible = false;
-        document.removeEventListener('click', dismiss);
-      }
-    });
-  }, 100);
+  document.getElementById('slot-popup-close').addEventListener('click',function(){ var p=document.getElementById('slot-popup'); if(p)p.remove(); slotPopupVisible=false; });
+  slotPopupVisible=true;
+  var rect=anchorEl.getBoundingClientRect();
+  var left=rect.left+window.scrollX; var top=rect.bottom+window.scrollY+6;
+  if(left+280>window.innerWidth) left=window.innerWidth-295;
+  if(top+350>window.innerHeight+window.scrollY) top=rect.top+window.scrollY-360;
+  popup.style.left=left+'px'; popup.style.top=top+'px';
+  setTimeout(function(){ document.addEventListener('click',function dismiss(e){ var sp=document.getElementById('slot-popup'); if(sp&&!sp.contains(e.target)){sp.remove();slotPopupVisible=false;document.removeEventListener('click',dismiss);} }); },100);
 }
 
 function renderAdminCalendar() {
-  var y = adminMonth.getFullYear();
-  var m = adminMonth.getMonth();
-  var months = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
-  var titleEl = document.getElementById('admin-month-title');
-  if (titleEl) titleEl.textContent = y + ' 年 ' + months[m];
-
-  var colorMap = { pilates:'#7B5EA7', strength:'#3A7CA5', cardio:'#A5763A', gymnastics:'#3A8A6A', weightlifting:'#3A8A6A' };
-  var firstDay = new Date(y, m, 1).getDay();
-  var daysInMonth = new Date(y, m+1, 0).getDate();
-  var prevDays = new Date(y, m, 0).getDate();
-
-  var cells = ['日','一','二','三','四','五','六'].map(function(d){ return '<div class="cal-header">'+d+'</div>'; }).join('');
-
-  for (var i = firstDay-1; i >= 0; i--) {
-    cells += '<div class="cal-day other-month"><div class="cal-day-num">'+(prevDays-i)+'</div></div>';
-  }
-
-  for (var d = 1; d <= daysInMonth; d++) {
-    var dateObj = new Date(y, m, d);
-    var dayKey = getDayKey(dateObj.getDay());
-    var dateStr = y + '-' + String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
-    var isToday = today.getFullYear()===y && today.getMonth()===m && today.getDate()===d;
-    var slots = WEEKLY_SCHEDULE[dayKey] || [];
-
-    var slotHTML = '';
-    for (var si = 0; si < slots.length; si++) {
-      var s = slots[si];
-      var course = null;
-      for (var ci = 0; ci < COURSES.length; ci++) { if (COURSES[ci].id === s.courseId) { course = COURSES[ci]; break; } }
-      var enrolled = MY_BOOKINGS.filter(function(b) { return b.date === dateStr && b.time === s.time && b.price !== 0; }).length;
-      var isOpen = enrolled >= 2;
-      var bg2 = colorMap[s.courseId] || '#888';
-      var slotStyle = 'border-radius:5px;padding:3px 6px;margin-bottom:2px;cursor:pointer;font-size:10px;line-height:1.4;transition:all 0.15s;';
-      if (isOpen) {
-        slotStyle += 'background:' + bg2 + ';color:#fff;box-shadow:0 0 0 2px ' + bg2 + ',0 0 8px ' + bg2 + '55;';
-      } else {
-        slotStyle += 'background:rgba(0,0,0,0.08);color:#888;border:1px dashed #ccc;';
-      }
-      slotHTML += '<div class="admin-cal-slot"'
-        + ' data-date="' + dateStr + '" data-slot-idx="' + si + '"'
-        + ' style="' + slotStyle + '"'
-        + ' title="' + (course ? course.name : '') + ' ' + s.time + ' · ' + enrolled + '人預約">'
-        + '<div style="font-weight:500;">' + s.name + '</div>'
-        + '<div>' + s.time + ' · ' + enrolled + '人</div>'
-        + (isOpen ? '<div style="font-size:9px;opacity:0.85;">✓ 開課</div>' : '')
-        + '</div>';
+  var y=adminMonth.getFullYear(); var m=adminMonth.getMonth();
+  var months=['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
+  var titleEl=document.getElementById('admin-month-title');
+  if(titleEl) titleEl.textContent=y+' 年 '+months[m];
+  var colorMap={pilates:'#7B5EA7',strength:'#3A7CA5',cardio:'#A5763A',gymnastics:'#3A8A6A',weightlifting:'#3A8A6A'};
+  var firstDay=new Date(y,m,1).getDay(); var daysInMonth=new Date(y,m+1,0).getDate(); var prevDays=new Date(y,m,0).getDate();
+  var cells=['日','一','二','三','四','五','六'].map(function(d){ return '<div class="cal-header">'+d+'</div>'; }).join('');
+  for(var i=firstDay-1;i>=0;i--) cells+='<div class="cal-day other-month"><div class="cal-day-num">'+(prevDays-i)+'</div></div>';
+  for(var d=1;d<=daysInMonth;d++) {
+    var dateObj=new Date(y,m,d); var dayKey=getDayKey(dateObj.getDay());
+    var dateStr=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var isToday=today.getFullYear()===y&&today.getMonth()===m&&today.getDate()===d;
+    var slots=WEEKLY_SCHEDULE[dayKey]||[];
+    var slotHTML='';
+    for(var si=0;si<slots.length;si++){
+      var s=slots[si]; var course=null;
+      for(var ci=0;ci<COURSES.length;ci++){if(COURSES[ci].id===s.courseId){course=COURSES[ci];break;}}
+      var enrolled=MY_BOOKINGS.filter(function(b){return b.date===dateStr&&b.time===s.time&&b.price!==0;}).length;
+      var isOpen=enrolled>=2; var bg2=colorMap[s.courseId]||'#888';
+      var slotStyle='border-radius:5px;padding:3px 6px;margin-bottom:2px;cursor:pointer;font-size:10px;line-height:1.4;transition:all 0.15s;';
+      if(isOpen){slotStyle+='background:'+bg2+';color:#fff;box-shadow:0 0 0 2px '+bg2+',0 0 8px '+bg2+'55;';}
+      else{slotStyle+='background:rgba(0,0,0,0.08);color:#888;border:1px dashed #ccc;';}
+      slotHTML+='<div class="admin-cal-slot" data-date="'+dateStr+'" data-slot-idx="'+si+'" style="'+slotStyle+'" title="'+(course?course.name:'')+' '+s.time+' · '+enrolled+'人預約"><div style="font-weight:500;">'+s.name+'</div><div>'+s.time+' · '+enrolled+'人</div>'+(isOpen?'<div style="font-size:9px;opacity:0.85;">✓ 開課</div>':'')+'</div>';
     }
-    cells += '<div class="cal-day'+(isToday?' today':'')+'"><div class="cal-day-num">'+d+'</div>'+slotHTML+'</div>';
+    cells+='<div class="cal-day'+(isToday?' today':'')+'"><div class="cal-day-num">'+d+'</div>'+slotHTML+'</div>';
   }
-  var remaining = 42 - firstDay - daysInMonth;
-  for (var ri = 1; ri <= remaining; ri++) {
-    cells += '<div class="cal-day other-month"><div class="cal-day-num">'+ri+'</div></div>';
-  }
-
-  var calGrid = document.getElementById('admin-cal-grid');
-  if (!calGrid) return;
-  calGrid.innerHTML = cells;
-
-  calGrid.addEventListener('click', function(e) {
-    var slot = e.target.closest('.admin-cal-slot');
-    if (!slot) return;
-    showSlotPopup(slot.getAttribute('data-date'), parseInt(slot.getAttribute('data-slot-idx')), slot);
-  });
+  var remaining=42-firstDay-daysInMonth;
+  for(var ri=1;ri<=remaining;ri++) cells+='<div class="cal-day other-month"><div class="cal-day-num">'+ri+'</div></div>';
+  var calGrid=document.getElementById('admin-cal-grid');
+  if(!calGrid) return;
+  calGrid.innerHTML=cells;
+  calGrid.onclick=function(e){ var slot=e.target.closest('.admin-cal-slot'); if(!slot)return; showSlotPopup(slot.getAttribute('data-date'),parseInt(slot.getAttribute('data-slot-idx')),slot); };
 }
 
-function changeAdminMonth(dir) {
-  adminMonth = new Date(adminMonth.getFullYear(), adminMonth.getMonth() + dir, 1);
-  renderAdminCalendar();
-}
+function changeAdminMonth(dir) { adminMonth=new Date(adminMonth.getFullYear(),adminMonth.getMonth()+dir,1); renderAdminCalendar(); }
 
 function showAdminTab(tab) {
-  document.querySelectorAll('.admin-nav-item').forEach(function(el) {
-    el.classList.toggle('active', el.dataset.tab === tab);
-  });
-  var content = document.getElementById('admin-content');
-  if (!content) return;
-  if (tab === 'dashboard')  renderAdminDashboard(content);
-  else if (tab === 'admin-cal') renderAdminCalTab(content);
-  else if (tab === 'bookings')  renderAdminBookings(content);
-  else if (tab === 'courses')   renderAdminCourses(content);
-  else if (tab === 'schedule')  renderAdminSchedule(content);
-  else if (tab === 'reminders') renderAdminReminders(content);
+  document.querySelectorAll('.admin-nav-item').forEach(function(el){ el.classList.toggle('active',el.dataset.tab===tab); });
+  var content=document.getElementById('admin-content');
+  if(!content) return;
+  if(tab==='dashboard') renderAdminDashboard(content);
+  else if(tab==='admin-cal') renderAdminCalTab(content);
+  else if(tab==='bookings') renderAdminBookings(content);
+  else if(tab==='courses') renderAdminCourses(content);
+  else if(tab==='schedule') renderAdminSchedule(content);
+  else if(tab==='reminders') renderAdminReminders(content);
 }
 
 function getOrders() {
-  var orderMap = {};
-  MY_BOOKINGS.forEach(function(b) {
-    var key = b.orderId || b.id;
-    if (!orderMap[key]) {
-      orderMap[key] = {
-        orderId: key, name:b.name, email:b.email, phone:b.phone,
-        planId:b.planId, planLabel:b.planLabel, acct:b.acct,
-        price:0, status:b.status, payStatus:b.payStatus||'unpaid',
-        note:b.note, level:b.level, slots:[]
-      };
-    }
-    orderMap[key].slots.push({ course:b.course, date:b.date, time:b.time, colorClass:b.colorClass });
-    if (b.price > 0) orderMap[key].price = b.price;
-    if (b.status === 'confirmed') orderMap[key].status = 'confirmed';
-    if (b.payStatus === 'paid') orderMap[key].payStatus = 'paid';
-  });
-  return Object.values(orderMap).sort(function(a,b){ return b.orderId - a.orderId; });
+  var orderMap={};
+  MY_BOOKINGS.forEach(function(b){ var key=b.orderId||b.id; if(!orderMap[key]){orderMap[key]={orderId:key,name:b.name,email:b.email,phone:b.phone,planId:b.planId,planLabel:b.planLabel,acct:b.acct,price:0,status:b.status,payStatus:b.payStatus||'unpaid',note:b.note,level:b.level,slots:[]};} orderMap[key].slots.push({course:b.course,date:b.date,time:b.time,colorClass:b.colorClass}); if(b.price>0)orderMap[key].price=b.price; if(b.status==='confirmed')orderMap[key].status='confirmed'; if(b.payStatus==='paid')orderMap[key].payStatus='paid'; });
+  return Object.values(orderMap).sort(function(a,b){return b.orderId-a.orderId;});
 }
 
-function getCourseColor(colorClass) {
-  var map = { pilates:'#7B5EA7', strength:'#3A7CA5', cardio:'#A5763A', gymnastics:'#3A8A6A', weightlifting:'#3A8A6A' };
-  return map[colorClass] || '#888';
-}
-
-function toggleOrderDetail(orderId) {
-  var row = document.getElementById('detail-'+orderId);
-  if (row) row.style.display = row.style.display==='none' ? 'block' : 'none';
-}
+function getCourseColor(colorClass) { var map={pilates:'#7B5EA7',strength:'#3A7CA5',cardio:'#A5763A',gymnastics:'#3A8A6A',weightlifting:'#3A8A6A'}; return map[colorClass]||'#888'; }
+function toggleOrderDetail(orderId) { var row=document.getElementById('detail-'+orderId); if(row)row.style.display=row.style.display==='none'?'block':'none'; }
 
 function renderAdminDashboard(content) {
-  var orders = getOrders();
-  var revenue = orders.reduce(function(s,o){ return s+(o.price||0); }, 0);
-  var pending = orders.filter(function(o){ return o.status==='pending'; }).length;
-  var confirmed = orders.filter(function(o){ return o.status==='confirmed'; }).length;
-  var cards = '';
-  orders.slice(0,8).forEach(function(o) {
-    var slots = o.slots.map(function(s){
-      return '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:'+getCourseColor(s.colorClass)+';margin-right:4px;vertical-align:middle;"></span>'+s.course+' '+s.date+' '+s.time;
-    }).join('<br>');
-    var payBadge = o.payStatus==='paid'
-      ? '<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;font-weight:600;">💰 已收款</span>'
-      : '<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;font-weight:600;">⏳ 待收款</span>';
-    var statusBadge = o.status==='confirmed'
-      ? '<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;">✓ 已確認</span>'
-      : '<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;">⏳ 待確認</span>';
-    cards += '<div style="background:white;border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;">'
-      +'<div style="display:flex;justify-content:space-between;align-items:flex-start;">'
-      +'<div><div style="font-weight:600;font-size:15px;">'+(o.name||'—')+'</div>'
-      +'<div style="font-size:12px;color:var(--warm-grey);margin-top:2px;">'+(o.email||'—')+'</div></div>'
-      +'<div style="font-family:\'Cormorant Garamond\',serif;font-size:22px;color:var(--accent-dark);">'+(o.price>0?'$'+o.price.toLocaleString():'—')+'</div>'
-      +'</div>'
-      +'<div style="font-size:12px;color:var(--warm-grey);line-height:1.8;">'+slots+'</div>'
-      +'<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">'
-      +'<span style="padding:3px 10px;border-radius:20px;background:var(--cream);color:var(--charcoal);font-size:11px;">'+(o.planLabel||'—')+'</span>'
-      +statusBadge+payBadge
-      +'</div></div>';
+  var orders=getOrders();
+  var revenue=orders.reduce(function(s,o){return s+(o.price||0);},0);
+  var pending=orders.filter(function(o){return o.status==='pending';}).length;
+  var confirmed=orders.filter(function(o){return o.status==='confirmed';}).length;
+  var cards='';
+  orders.slice(0,8).forEach(function(o){
+    var slots=o.slots.map(function(s){return '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:'+getCourseColor(s.colorClass)+';margin-right:4px;vertical-align:middle;"></span>'+s.course+' '+s.date+' '+s.time;}).join('<br>');
+    var payBadge=o.payStatus==='paid'?'<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;font-weight:600;">💰 已收款</span>':'<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;font-weight:600;">⏳ 待收款</span>';
+    var statusBadge=o.status==='confirmed'?'<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;">✓ 已確認</span>':'<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;">⏳ 待確認</span>';
+    cards+='<div style="background:white;border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><div><div style="font-weight:600;font-size:15px;">'+(o.name||'—')+'</div><div style="font-size:12px;color:var(--warm-grey);margin-top:2px;">'+(o.email||'—')+'</div></div><div style="font-family:\'Cormorant Garamond\',serif;font-size:22px;color:var(--accent-dark);">'+(o.price>0?'$'+o.price.toLocaleString():'—')+'</div></div><div style="font-size:12px;color:var(--warm-grey);line-height:1.8;">'+slots+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"><span style="padding:3px 10px;border-radius:20px;background:var(--cream);color:var(--charcoal);font-size:11px;">'+(o.planLabel||'—')+'</span>'+statusBadge+payBadge+'</div></div>';
   });
-  content.innerHTML = ''
-    +'<div class="admin-header"><h2>總覽儀表板</h2><p>SYLVIEFITNESS</p></div>'
-    +'<div class="stats-grid">'
-    +'<div class="stat-card"><div class="stat-label">總訂單數</div><div class="stat-value">'+orders.length+'</div><div class="stat-sub">筆</div></div>'
-    +'<div class="stat-card"><div class="stat-label">已收款金額</div><div class="stat-value">$'+revenue.toLocaleString()+'</div><div class="stat-sub">新台幣</div></div>'
-    +'<div class="stat-card"><div class="stat-label">待確認</div><div class="stat-value">'+pending+'</div><div class="stat-sub">筆</div></div>'
-    +'<div class="stat-card"><div class="stat-label">已確認</div><div class="stat-value">'+confirmed+'</div><div class="stat-sub">筆</div></div>'
-    +'</div>'
-    +'<div style="padding:14px 18px;background:#FFF8F0;border:1px solid #F0D9B5;border-radius:12px;font-size:13px;line-height:1.9;margin-bottom:24px;">'
-    +'<strong>確認收款流程：</strong><br>'
-    +'① 學員送出預約（含帳號後五碼）→ ② 至「預約名單」對照入帳 → ③ 點「確認收款」→ ④ 點「確認預約」→ ⑤ 手動寄出確認信'
-    +'</div>'
+  content.innerHTML='<div class="admin-header"><h2>總覽儀表板</h2><p>SYLVIEFITNESS</p></div>'
+    +'<div class="stats-grid"><div class="stat-card"><div class="stat-label">總訂單數</div><div class="stat-value">'+orders.length+'</div><div class="stat-sub">筆</div></div><div class="stat-card"><div class="stat-label">已收款金額</div><div class="stat-value">$'+revenue.toLocaleString()+'</div><div class="stat-sub">新台幣</div></div><div class="stat-card"><div class="stat-label">待確認</div><div class="stat-value">'+pending+'</div><div class="stat-sub">筆</div></div><div class="stat-card"><div class="stat-label">已確認</div><div class="stat-value">'+confirmed+'</div><div class="stat-sub">筆</div></div></div>'
+    +'<div style="padding:14px 18px;background:#FFF8F0;border:1px solid #F0D9B5;border-radius:12px;font-size:13px;line-height:1.9;margin-bottom:24px;"><strong>確認收款流程：</strong><br>① 學員送出預約（含帳號後五碼）→ ② 至「預約名單」對照入帳 → ③ 點「確認收款」→ ④ 點「確認預約」→ ⑤ 手動寄出確認信</div>'
     +'<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:20px;margin-bottom:14px;">近期訂單</h3>'
-    +'<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">'
-    +(cards||'<div style="color:var(--warm-grey);padding:24px;grid-column:1/-1;text-align:center;">目前尚無預約</div>')
-    +'</div>';
+    +'<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">'+(cards||'<div style="color:var(--warm-grey);padding:24px;grid-column:1/-1;text-align:center;">目前尚無預約</div>')+'</div>';
 }
 
 function renderAdminCalTab(content) {
-  content.innerHTML = ''
-    +'<div class="admin-header"><h2>每月課程行事曆</h2>'
-    +'<p>達 2 人預約即開課（色塊亮起 = 開課），點選時段查看學員並加入 Google 日曆</p></div>'
+  content.innerHTML='<div class="admin-header"><h2>每月課程行事曆</h2><p>達 2 人預約即開課（色塊亮起 = 開課），點選時段查看學員並加入 Google 日曆</p></div>'
     +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">'
     +'<button class="btn-icon" onclick="changeAdminMonth(-1)">&#8249;</button>'
     +'<h3 id="admin-month-title" style="font-family:\'Cormorant Garamond\',serif;font-size:22px;min-width:130px;text-align:center;"></h3>'
     +'<button class="btn-icon" onclick="changeAdminMonth(1)">&#8250;</button>'
-    +'<div style="margin-left:auto;display:flex;gap:10px;font-size:11px;align-items:center;flex-wrap:wrap;">'
-    +'<span><span style="display:inline-block;width:10px;height:10px;background:#7B5EA7;border-radius:2px;margin-right:3px;"></span>Pilates</span>'
-    +'<span><span style="display:inline-block;width:10px;height:10px;background:#3A7CA5;border-radius:2px;margin-right:3px;"></span>肌力</span>'
-    +'<span><span style="display:inline-block;width:10px;height:10px;background:#A5763A;border-radius:2px;margin-right:3px;"></span>混合</span>'
-    +'<span><span style="display:inline-block;width:10px;height:10px;background:#3A8A6A;border-radius:2px;margin-right:3px;"></span>體操/舉重</span>'
-    +'<span style="color:var(--warm-grey);">虛線=未達人數</span>'
-    +'</div></div>'
+    +'<div style="margin-left:auto;display:flex;gap:10px;font-size:11px;align-items:center;flex-wrap:wrap;"><span><span style="display:inline-block;width:10px;height:10px;background:#7B5EA7;border-radius:2px;margin-right:3px;"></span>Pilates</span><span><span style="display:inline-block;width:10px;height:10px;background:#3A7CA5;border-radius:2px;margin-right:3px;"></span>肌力</span><span><span style="display:inline-block;width:10px;height:10px;background:#A5763A;border-radius:2px;margin-right:3px;"></span>混合</span><span><span style="display:inline-block;width:10px;height:10px;background:#3A8A6A;border-radius:2px;margin-right:3px;"></span>體操/舉重</span><span style="color:var(--warm-grey);">虛線=未達人數</span></div></div>'
     +'<div class="calendar-grid" id="admin-cal-grid"></div>';
-  setTimeout(renderAdminCalendar, 50);
+  setTimeout(renderAdminCalendar,50);
 }
 
 function renderAdminBookings(content) {
-  var orders = getOrders();
-  var totalRevenue = orders.filter(function(o){ return o.payStatus==='paid'; }).reduce(function(s,o){ return s+(o.price||0); }, 0);
-  if (orders.length === 0) {
-    content.innerHTML = '<div class="admin-header"><h2>預約名單</h2><p>目前尚無預約記錄</p></div>'
-      +'<div style="padding:40px;text-align:center;color:var(--warm-grey);">尚無學員預約</div>';
-    return;
-  }
-  var cards = '';
-  orders.forEach(function(o) {
-    var slotsHtml = o.slots.map(function(s) {
-      return '<div style="margin-bottom:3px;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:'+getCourseColor(s.colorClass)+';margin-right:5px;vertical-align:middle;"></span>'+s.course+' '+s.date+' '+s.time+'</div>';
-    }).join('');
-    var statusBadge = o.status==='confirmed'
-      ? '<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;font-weight:600;">✓ 已確認</span>'
-      : '<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;font-weight:600;">⏳ 待確認</span>';
-    var payBadge = o.payStatus==='paid'
-      ? '<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;font-weight:600;">💰 已收款</span>'
-      : '<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;font-weight:600;">⏳ 待收款</span>';
-    var confirmBtn = o.status!=='confirmed'
-      ? '<button class="btn-cancel" style="font-size:11px;" onclick="adminConfirmOrder('+o.orderId+')">確認預約</button>'
-      : '<button class="btn-cancel" style="font-size:11px;color:var(--sage);border-color:var(--sage);" disabled>已確認</button>';
-    var payBtn = o.payStatus!=='paid'
-      ? '<button class="btn-cancel" style="font-size:11px;background:#E8F5EB;border-color:#6B9E7A;color:#3A8A5A;" onclick="markPaid('+o.orderId+')">確認收款</button>'
-      : '<button class="btn-cancel" style="font-size:11px;color:var(--sage);border-color:var(--sage);" disabled>已收款</button>';
-    cards += '<div id="order-card-'+o.orderId+'" style="background:white;border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:14px;">'
-      +'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">'
-      +'<div><div style="font-weight:600;font-size:16px;">'+(o.name||'—')+'</div>'
-      +'<div style="font-size:12px;color:var(--warm-grey);margin-top:2px;">'+(o.email||'—')+' · '+(o.phone||'—')+'</div></div>'
-      +'<div style="text-align:right;">'
-      +'<div style="font-family:\'Cormorant Garamond\',serif;font-size:26px;color:var(--accent-dark);line-height:1;">'+(o.price>0?'$'+o.price.toLocaleString():'—')+'</div>'
-      +'<div style="font-size:11px;color:var(--warm-grey);">'+(o.planLabel||'—')+'</div>'
-      +'</div></div>'
-      +'<div style="font-size:12px;color:var(--charcoal);line-height:1.9;padding:10px 12px;background:var(--warm-white);border-radius:8px;margin-bottom:12px;">'+slotsHtml+'</div>'
-      +'<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">'+statusBadge+payBadge
-      +'<span style="font-size:11px;color:var(--warm-grey);">帳號後五碼: <strong style="font-family:monospace;letter-spacing:1px;">'+(o.acct||'—')+'</strong></span></div>'
-      +'<div id="detail-'+o.orderId+'" style="display:none;padding:10px 12px;background:#FAFAF8;border-radius:8px;font-size:12px;margin-bottom:12px;">'
-      +'<span style="color:var(--warm-grey);">程度：</span>'+(o.level||'—')+'&nbsp;&nbsp;'
-      +'<span style="color:var(--warm-grey);">備註：</span>'+(o.note||'（無）')+'&nbsp;&nbsp;'
-      +'<span style="color:var(--warm-grey);">訂單編號：</span>'+o.orderId+'</div>'
-      +'<div style="display:flex;gap:8px;flex-wrap:wrap;">'
-      +'<button class="btn-cancel" style="font-size:11px;" onclick="toggleOrderDetail('+o.orderId+')">展開詳細</button>'
-      +payBtn+confirmBtn
-      +'<button class="btn-cancel" style="font-size:11px;border-color:#D4696A;color:#D4696A;" onclick="adminDeleteOrder('+o.orderId+')">刪除</button>'
-      +'</div></div>';
+  var orders=getOrders();
+  var totalRevenue=orders.filter(function(o){return o.payStatus==='paid';}).reduce(function(s,o){return s+(o.price||0);},0);
+  if(!orders.length){content.innerHTML='<div class="admin-header"><h2>預約名單</h2><p>目前尚無預約記錄</p></div><div style="padding:40px;text-align:center;color:var(--warm-grey);">尚無學員預約</div>';return;}
+  var cards='';
+  orders.forEach(function(o){
+    var slotsHtml=o.slots.map(function(s){return '<div style="margin-bottom:3px;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:'+getCourseColor(s.colorClass)+';margin-right:5px;vertical-align:middle;"></span>'+s.course+' '+s.date+' '+s.time+'</div>';}).join('');
+    var statusBadge=o.status==='confirmed'?'<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;font-weight:600;">✓ 已確認</span>':'<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;font-weight:600;">⏳ 待確認</span>';
+    var payBadge=o.payStatus==='paid'?'<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;font-weight:600;">💰 已收款</span>':'<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;font-weight:600;">⏳ 待收款</span>';
+    var confirmBtn=o.status!=='confirmed'?'<button class="btn-cancel" style="font-size:11px;" onclick="adminConfirmOrder('+o.orderId+')">確認預約</button>':'<button class="btn-cancel" style="font-size:11px;color:var(--sage);border-color:var(--sage);" disabled>已確認</button>';
+    var payBtn=o.payStatus!=='paid'?'<button class="btn-cancel" style="font-size:11px;background:#E8F5EB;border-color:#6B9E7A;color:#3A8A5A;" onclick="markPaid('+o.orderId+')">確認收款</button>':'<button class="btn-cancel" style="font-size:11px;color:var(--sage);border-color:var(--sage);" disabled>已收款</button>';
+    cards+='<div id="order-card-'+o.orderId+'" style="background:white;border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:14px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;"><div><div style="font-weight:600;font-size:16px;">'+(o.name||'—')+'</div><div style="font-size:12px;color:var(--warm-grey);margin-top:2px;">'+(o.email||'—')+' · '+(o.phone||'—')+'</div></div><div style="text-align:right;"><div style="font-family:\'Cormorant Garamond\',serif;font-size:26px;color:var(--accent-dark);line-height:1;">'+(o.price>0?'$'+o.price.toLocaleString():'—')+'</div><div style="font-size:11px;color:var(--warm-grey);">'+(o.planLabel||'—')+'</div></div></div><div style="font-size:12px;color:var(--charcoal);line-height:1.9;padding:10px 12px;background:var(--warm-white);border-radius:8px;margin-bottom:12px;">'+slotsHtml+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">'+statusBadge+payBadge+'<span style="font-size:11px;color:var(--warm-grey);">帳號後五碼: <strong style="font-family:monospace;letter-spacing:1px;">'+(o.acct||'—')+'</strong></span></div><div id="detail-'+o.orderId+'" style="display:none;padding:10px 12px;background:#FAFAF8;border-radius:8px;font-size:12px;margin-bottom:12px;"><span style="color:var(--warm-grey);">程度：</span>'+(o.level||'—')+'&nbsp;&nbsp;<span style="color:var(--warm-grey);">備註：</span>'+(o.note||'（無）')+'&nbsp;&nbsp;<span style="color:var(--warm-grey);">訂單編號：</span>'+o.orderId+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn-cancel" style="font-size:11px;" onclick="toggleOrderDetail('+o.orderId+')">展開詳細</button>'+payBtn+confirmBtn+'<button class="btn-cancel" style="font-size:11px;border-color:#D4696A;color:#D4696A;" onclick="adminDeleteOrder('+o.orderId+')">刪除</button></div></div>';
   });
-  content.innerHTML = ''
-    +'<div class="admin-header"><h2>預約名單</h2><p>共 '+orders.length+' 筆訂單・已收款 $'+totalRevenue.toLocaleString()+'</p></div>'
-    +cards;
+  content.innerHTML='<div class="admin-header"><h2>預約名單</h2><p>共 '+orders.length+' 筆訂單・已收款 $'+totalRevenue.toLocaleString()+'</p></div>'+cards;
 }
 
-function markPaid(orderId) {
-  MY_BOOKINGS.forEach(function(b) {
-    if ((b.orderId||b.id) === orderId) b.payStatus = 'paid';
-  });
-  renderAdminBookings(document.getElementById('admin-content'));
-  showToast('已確認收款！', 'success');
-}
+function markPaid(orderId) { MY_BOOKINGS.forEach(function(b){if((b.orderId||b.id)===orderId)b.payStatus='paid';}); renderAdminBookings(document.getElementById('admin-content')); showToast('已確認收款！','success'); }
 
 function renderAdminCourses(content) {
-  var planCards = '';
-  ALL_PLANS.forEach(function(p) {
-    planCards += '<div style="background:white;border:1px solid var(--border);border-radius:12px;padding:16px;">'
-      +'<div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--warm-grey);margin-bottom:8px;">'+p.label+' · '+p.sublabel+'</div>'
-      +'<div style="display:flex;align-items:center;gap:6px;">'
-      +'<span style="font-size:18px;color:var(--warm-grey);">$</span>'
-      +'<input type="number" id="price-'+p.id+'" value="'+(PLAN_PRICES[p.id]||p.price)+'" style="border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-size:22px;font-family:Georgia,serif;width:100%;outline:none;color:var(--charcoal);">'
-      +'</div></div>';
-  });
-  var courseCards = '';
-  COURSES.forEach(function(c, i) {
-    courseCards += '<div style="background:white;border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;">'
-      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">'
-      +'<span class="course-tag '+c.tagClass+'">'+c.tag+'</span>'
-      +'<button class="btn-primary" onclick="saveAdminCourse('+i+')" style="padding:8px 16px;font-size:11px;">儲存</button>'
-      +'</div>'
-      +'<div class="admin-form-grid">'
-      +'<div class="form-group"><label>課程名稱</label><input class="form-control" id="ac-name-'+i+'" value="'+c.name.replace(/"/g,'&quot;')+'"></div>'
-      +'<div class="form-group"><label>課程標籤</label><input class="form-control" id="ac-tag-'+i+'" value="'+c.tag.replace(/"/g,'&quot;')+'"></div>'
-      +'</div>'
-      +'<div class="form-group"><label>課程描述</label><textarea class="form-control" rows="2" id="ac-desc-'+i+'">'+c.desc+'</textarea></div>'
-      +'</div>';
-  });
-  content.innerHTML = ''
-    +'<div class="admin-header"><h2>課程與費用管理</h2><p>修改課程介紹及各方案定價，儲存後立即生效</p></div>'
-    +'<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:20px;margin-bottom:12px;">收費方案定價</h3>'
-    +'<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:14px;">'+planCards+'</div>'
-    +'<button class="btn-primary" onclick="savePrices()" style="margin-bottom:32px;">儲存所有定價</button>'
-    +'<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:20px;margin-bottom:12px;">課程介紹內容</h3>'
-    +courseCards;
+  var planCards='';
+  ALL_PLANS.forEach(function(p){ planCards+='<div style="background:white;border:1px solid var(--border);border-radius:12px;padding:16px;"><div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--warm-grey);margin-bottom:8px;">'+p.label+' · '+p.sublabel+'</div><div style="display:flex;align-items:center;gap:6px;"><span style="font-size:18px;color:var(--warm-grey);">$</span><input type="number" id="price-'+p.id+'" value="'+(PLAN_PRICES[p.id]||p.price)+'" style="border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-size:22px;font-family:Georgia,serif;width:100%;outline:none;color:var(--charcoal);"></div></div>'; });
+  var courseCards='';
+  COURSES.forEach(function(c,i){ courseCards+='<div style="background:white;border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span class="course-tag '+c.tagClass+'">'+c.tag+'</span><button class="btn-primary" onclick="saveAdminCourse('+i+')" style="padding:8px 16px;font-size:11px;">儲存</button></div><div class="admin-form-grid"><div class="form-group"><label>課程名稱</label><input class="form-control" id="ac-name-'+i+'" value="'+c.name.replace(/"/g,'&quot;')+'"></div><div class="form-group"><label>課程標籤</label><input class="form-control" id="ac-tag-'+i+'" value="'+c.tag.replace(/"/g,'&quot;')+'"></div></div><div class="form-group"><label>課程描述</label><textarea class="form-control" rows="2" id="ac-desc-'+i+'">'+c.desc+'</textarea></div></div>'; });
+  content.innerHTML='<div class="admin-header"><h2>課程與費用管理</h2><p>修改課程介紹及各方案定價，儲存後立即生效</p></div><h3 style="font-family:\'Cormorant Garamond\',serif;font-size:20px;margin-bottom:12px;">收費方案定價</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:14px;">'+planCards+'</div><button class="btn-primary" onclick="savePrices()" style="margin-bottom:32px;">儲存所有定價</button><h3 style="font-family:\'Cormorant Garamond\',serif;font-size:20px;margin-bottom:12px;">課程介紹內容</h3>'+courseCards;
 }
 
 function renderAdminSchedule(content) {
-  var days = Object.keys(WEEKLY_SCHEDULE);
-  var rows = '';
-  days.forEach(function(day) {
-    if (WEEKLY_SCHEDULE[day].length === 0) {
-      rows += '<tr><td>星期'+DAY_LABELS[day]+'</td><td colspan="3" style="color:var(--warm-grey);">休息日</td></tr>';
-    } else {
-      WEEKLY_SCHEDULE[day].forEach(function(s, i) {
-        var cname = '';
-        COURSES.forEach(function(c){ if (c.id===s.courseId) cname=c.name; });
-        rows += '<tr><td>星期'+DAY_LABELS[day]+'</td><td>'+s.time+'</td><td>'+cname+'</td>'
-          +'<td><button class="btn-cancel admin-remove-slot" style="font-size:11px;" data-day="'+day+'" data-idx="'+i+'">移除</button></td></tr>';
-      });
-    }
+  var days=Object.keys(WEEKLY_SCHEDULE); var rows='';
+  days.forEach(function(day){
+    if(!WEEKLY_SCHEDULE[day].length){rows+='<tr><td>星期'+DAY_LABELS[day]+'</td><td colspan="3" style="color:var(--warm-grey);">休息日</td></tr>';}
+    else{WEEKLY_SCHEDULE[day].forEach(function(s,i){ var cname=''; COURSES.forEach(function(c){if(c.id===s.courseId)cname=c.name;}); rows+='<tr><td>星期'+DAY_LABELS[day]+'</td><td>'+s.time+'</td><td>'+cname+'</td><td><button class="btn-cancel admin-remove-slot" style="font-size:11px;" data-day="'+day+'" data-idx="'+i+'">移除</button></td></tr>'; });}
   });
-  var dayOpts = days.map(function(d){ return '<option value="'+d+'">星期'+DAY_LABELS[d]+'</option>'; }).join('');
-  var cOpts = COURSES.map(function(c){ return '<option value="'+c.id+'">'+c.name+'</option>'; }).join('');
-  content.innerHTML = ''
-    +'<div class="admin-header"><h2>每週開課時間管理</h2><p>新增或移除固定開課時段，修改後月曆立即更新</p></div>'
-    +'<div style="overflow-x:auto;margin-bottom:24px;"><table class="data-table" id="schedule-table">'
-    +'<thead><tr><th>星期</th><th>時段</th><th>課程</th><th>操作</th></tr></thead>'
-    +'<tbody>'+rows+'</tbody></table></div>'
-    +'<div style="padding:22px;background:white;border:1px solid var(--border);border-radius:14px;">'
-    +'<h4 style="margin-bottom:14px;font-size:16px;">新增時段</h4>'
-    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">'
-    +'<div class="form-group" style="margin:0;"><label>星期</label><select class="form-control" id="new-day">'+dayOpts+'</select></div>'
-    +'<div class="form-group" style="margin:0;"><label>時間</label><input class="form-control" type="time" id="new-time" value="08:00"></div>'
-    +'</div>'
-    +'<div class="form-group" style="margin-bottom:12px;"><label>課程</label><select class="form-control" id="new-course">'+cOpts+'</select></div>'
-    +'<button class="btn-primary" onclick="addSlot()">新增時段</button>'
-    +'</div>';
-
-  var tbl = document.getElementById('schedule-table');
-  if (tbl) {
-    tbl.addEventListener('click', function(e) {
-      var btn = e.target.closest('.admin-remove-slot');
-      if (!btn) return;
-      removeSlot(btn.getAttribute('data-day'), parseInt(btn.getAttribute('data-idx')));
-    });
+  var dayOpts=days.map(function(d){return '<option value="'+d+'">星期'+DAY_LABELS[d]+'</option>';}).join('');
+  var cOpts=COURSES.map(function(c){return '<option value="'+c.id+'">'+c.name+'</option>';}).join('');
+  content.innerHTML='<div class="admin-header"><h2>每週開課時間管理</h2><p>新增或移除固定開課時段，修改後月曆立即更新</p></div>'
+    +'<div style="overflow-x:auto;margin-bottom:24px;"><table class="data-table" id="schedule-table"><thead><tr><th>星期</th><th>時段</th><th>課程</th><th>操作</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+    +'<div style="padding:22px;background:white;border:1px solid var(--border);border-radius:14px;"><h4 style="margin-bottom:14px;font-size:16px;">新增時段</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;"><div class="form-group" style="margin:0;"><label>星期</label><select class="form-control" id="new-day">'+dayOpts+'</select></div><div class="form-group" style="margin:0;"><label>時間</label><input class="form-control" type="time" id="new-time" value="08:00"></div></div><div class="form-group" style="margin-bottom:12px;"><label>課程</label><select class="form-control" id="new-course">'+cOpts+'</select></div><button class="btn-primary" onclick="addSlot()">新增時段</button></div>';
+  var tbl=document.getElementById('schedule-table');
+  if(tbl){
+    tbl.onclick=function(e){ var btn=e.target.closest('.admin-remove-slot'); if(!btn)return; removeSlot(btn.getAttribute('data-day'),parseInt(btn.getAttribute('data-idx'))); };
   }
 }
 
 function renderAdminReminders(content) {
-  var tKeys   = ['24h', '2h', 'weekly'];
-  var tIcons  = ['📧', '⏰', '📅'];
-  var tTitles = ['上課前 24 小時提醒', '上課前 2 小時提醒', '每週課表通知'];
-  var tDescs  = ['課程開始前 24 小時自動寄送提醒 Email', '課程開始前 2 小時再次提醒', '每週一早上 8 點寄送本週課表'];
-  var cards = '';
-  for (var ki = 0; ki < tKeys.length; ki++) {
-    var key = tKeys[ki];
-    var on  = reminderToggles[key];
-    cards += '<div class="reminder-card">'
-      +'<h4>'+tIcons[ki]+' '+tTitles[ki]+'</h4>'
-      +'<p>'+tDescs[ki]+'</p>'
-      +'<div class="reminder-toggle">'
-      +'<div class="'+(on?'toggle-switch on':'toggle-switch')+'" data-rkey="'+key+'" onclick="handleReminderToggle(this)"></div>'
-      +'<span class="toggle-label">'+(on?'已啟用':'已停用')+'</span>'
-      +'</div></div>';
-  }
-  content.innerHTML = ''
-    +'<div class="admin-header"><h2>提醒設定</h2><p>管理自動提醒與確認信流程</p></div>'
-    +'<div class="reminder-card" style="background:#FFF8F0;border:1px solid #F0D9B5;">'
-    +'<h4>💳 確認收款流程說明</h4>'
-    +'<p>① 學員送出預約（含帳號後五碼）→ 狀態「待確認」<br>'
-    +'② 至「預約名單」對照帳號後五碼確認入帳<br>'
-    +'③ 點「確認收款」更新收款狀態 → ④ 點「確認預約」通知學員<br><br>'
-    +'如需全自動寄信，可串接 Gmail API 或 SendGrid。</p>'
-    +'</div>'
+  var tKeys=['24h','2h','weekly']; var tIcons=['📧','⏰','📅'];
+  var tTitles=['上課前 24 小時提醒','上課前 2 小時提醒','每週課表通知'];
+  var tDescs=['課程開始前 24 小時自動寄送提醒 Email','課程開始前 2 小時再次提醒','每週一早上 8 點寄送本週課表'];
+  var cards='';
+  for(var ki=0;ki<tKeys.length;ki++){var key=tKeys[ki];var on=reminderToggles[key]; cards+='<div class="reminder-card"><h4>'+tIcons[ki]+' '+tTitles[ki]+'</h4><p>'+tDescs[ki]+'</p><div class="reminder-toggle"><div class="'+(on?'toggle-switch on':'toggle-switch')+'" data-rkey="'+key+'" onclick="handleReminderToggle(this)"></div><span class="toggle-label">'+(on?'已啟用':'已停用')+'</span></div></div>';}
+  content.innerHTML='<div class="admin-header"><h2>提醒設定</h2><p>管理自動提醒與確認信流程</p></div>'
+    +'<div class="reminder-card" style="background:#FFF8F0;border:1px solid #F0D9B5;"><h4>💳 確認收款流程說明</h4><p>① 學員送出預約（含帳號後五碼）→ 狀態「待確認」<br>② 至「預約名單」對照帳號後五碼確認入帳<br>③ 點「確認收款」更新收款狀態 → ④ 點「確認預約」通知學員<br><br>如需全自動寄信，可串接 Gmail API 或 SendGrid。</p></div>'
     +cards
-    +'<div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">'
-    +'<button class="btn-primary" onclick="sendTestReminder()">📨 寄送測試提醒</button>'
-    +'<button class="btn-secondary" onclick="adminLogout()">登出後台</button>'
-    +'</div>';
+    +'<div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;"><button class="btn-primary" onclick="sendTestReminder()">📨 寄送測試提醒</button><button class="btn-secondary" onclick="adminLogout()">登出後台</button></div>';
 }
 
 function savePrices() {
-  ALL_PLANS.forEach(function(p) {
-    var el = document.getElementById('price-'+p.id);
-    if (el) { PLAN_PRICES[p.id] = parseInt(el.value) || PLAN_PRICES[p.id]; p.price = PLAN_PRICES[p.id]; }
-  });
-  renderPlanSelect();
-  showToast('定價已更新！', 'success');
+  ALL_PLANS.forEach(function(p){ var el=document.getElementById('price-'+p.id); if(el){PLAN_PRICES[p.id]=parseInt(el.value)||PLAN_PRICES[p.id];p.price=PLAN_PRICES[p.id];} });
+  renderPlanSelect(); showToast('定價已更新！','success');
 }
 
 function saveAdminCourse(i) {
-  var n = document.getElementById('ac-name-'+i);
-  var t = document.getElementById('ac-tag-'+i);
-  var d = document.getElementById('ac-desc-'+i);
-  if (n) COURSES[i].name = n.value;
-  if (t) COURSES[i].tag  = t.value;
-  if (d) COURSES[i].desc = d.value;
-  renderCourseCards();
-  showToast('課程已更新', 'success');
+  var n=document.getElementById('ac-name-'+i); var t=document.getElementById('ac-tag-'+i); var d=document.getElementById('ac-desc-'+i);
+  if(n)COURSES[i].name=n.value; if(t)COURSES[i].tag=t.value; if(d)COURSES[i].desc=d.value;
+  renderCourseCards(); showToast('課程已更新','success');
 }
 
+// ★ 修正1a：addSlot 後同步刷新學生預約月曆
 function addSlot() {
-  var day = document.getElementById('new-day').value;
-  var time = document.getElementById('new-time').value;
-  var courseId = document.getElementById('new-course').value;
-  var course = null;
-  COURSES.forEach(function(c){ if (c.id===courseId) course=c; });
-  if (!course) return;
-  WEEKLY_SCHEDULE[day].push({ time:time, courseId:courseId, name:course.name.slice(0,4) });
+  var day=document.getElementById('new-day').value;
+  var time=document.getElementById('new-time').value;
+  var courseId=document.getElementById('new-course').value;
+  var course=null;
+  COURSES.forEach(function(c){if(c.id===courseId)course=c;});
+  if(!course) return;
+  WEEKLY_SCHEDULE[day].push({time:time,courseId:courseId,name:course.name.slice(0,4)});
+  if(selectedPlan) renderBookingCal();  // ★ 同步更新
   renderAdminSchedule(document.getElementById('admin-content'));
-  showToast('已新增時段', 'success');
+  showToast('已新增時段，預約月曆已同步更新','success');
 }
 
+// ★ 修正1b：removeSlot 後同步刷新學生預約月曆
 function removeSlot(day, idx) {
-  WEEKLY_SCHEDULE[day].splice(idx, 1);
+  WEEKLY_SCHEDULE[day].splice(idx,1);
+  if(selectedPlan) renderBookingCal();  // ★ 同步更新
   renderAdminSchedule(document.getElementById('admin-content'));
-  showToast('已移除時段');
+  showToast('已移除時段，預約月曆已同步更新');
 }
 
-function adminConfirmOrder(orderId) {
-  MY_BOOKINGS.forEach(function(b){ if ((b.orderId||b.id)===orderId) b.status='confirmed'; });
-  renderAdminBookings(document.getElementById('admin-content'));
-  showToast('已確認預約', 'success');
-}
+function adminConfirmOrder(orderId) { MY_BOOKINGS.forEach(function(b){if((b.orderId||b.id)===orderId)b.status='confirmed';}); renderAdminBookings(document.getElementById('admin-content')); showToast('已確認預約','success'); }
 
 function adminDeleteOrder(orderId) {
-  if (!confirm('確定刪除此訂單（含所有時段）？')) return;
-  MY_BOOKINGS = MY_BOOKINGS.filter(function(b){ return (b.orderId||b.id)!==orderId; });
+  if(!confirm('確定刪除此訂單（含所有時段）？')) return;
+  MY_BOOKINGS=MY_BOOKINGS.filter(function(b){return(b.orderId||b.id)!==orderId;});
   renderAdminBookings(document.getElementById('admin-content'));
-  renderCalendar(); renderBookingList();
-  showToast('已刪除訂單');
+  renderCalendar(); renderBookingList(); showToast('已刪除訂單');
 }
 
 function handleReminderToggle(el) {
-  var key = el.getAttribute('data-rkey');
-  reminderToggles[key] = !reminderToggles[key];
-  el.classList.toggle('on', reminderToggles[key]);
-  if (el.nextElementSibling) el.nextElementSibling.textContent = reminderToggles[key] ? '已啟用' : '已停用';
-  showToast(reminderToggles[key] ? '提醒已啟用' : '提醒已停用', reminderToggles[key] ? 'success' : '');
+  var key=el.getAttribute('data-rkey');
+  reminderToggles[key]=!reminderToggles[key];
+  el.classList.toggle('on',reminderToggles[key]);
+  if(el.nextElementSibling)el.nextElementSibling.textContent=reminderToggles[key]?'已啟用':'已停用';
+  showToast(reminderToggles[key]?'提醒已啟用':'提醒已停用',reminderToggles[key]?'success':'');
 }
 
 function adminLogout() { showPage('courses'); showToast('已登出後台'); }
-function sendTestReminder() { showToast('✉️ 測試提醒已寄出！', 'success'); }
+function sendTestReminder() { showToast('✉️ 測試提醒已寄出！','success'); }
 
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
-  document.getElementById('page-' + id).classList.add('active');
-  document.querySelectorAll('.nav-tab').forEach(function(t, i) {
-    t.classList.toggle('active', ['courses','booking','my'][i] === id);
-  });
-  window.scrollTo(0, 0);
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(function(t,i){t.classList.toggle('active',['courses','booking','my'][i]===id);});
+  window.scrollTo(0,0);
 }
 
 function showToast(msg, type) {
-  type = type || '';
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (type ? ' ' + type : '');
+  type=type||'';
+  var t=document.getElementById('toast');
+  t.textContent=msg; t.className='toast show'+(type?' '+type:'');
   clearTimeout(t._timer);
-  t._timer = setTimeout(function() { t.classList.remove('show'); }, 3000);
+  t._timer=setTimeout(function(){t.classList.remove('show');},3000);
 }
 
 // ── START ──
 init();
 
-document.getElementById('plan-select-grid').addEventListener('click', function(e) {
-  var item = e.target.closest('.plan-option');
-  if (item && item.getAttribute('data-plan-id')) selectPlan(item.getAttribute('data-plan-id'));
+document.getElementById('plan-select-grid').addEventListener('click',function(e){
+  var item=e.target.closest('.plan-option');
+  if(item&&item.getAttribute('data-plan-id'))selectPlan(item.getAttribute('data-plan-id'));
 });
-
-document.querySelector('.admin-sidebar').addEventListener('click', function(e) {
-  var item = e.target.closest('.admin-nav-item');
-  if (item && item.dataset.tab) showAdminTab(item.dataset.tab);
+document.querySelector('.admin-sidebar').addEventListener('click',function(e){
+  var item=e.target.closest('.admin-nav-item');
+  if(item&&item.dataset.tab)showAdminTab(item.dataset.tab);
 });
-
-document.getElementById('admin-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeAdminModal();
-});
-
-document.getElementById('confirm-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeConfirmModal();
-});
+document.getElementById('admin-modal').addEventListener('click',function(e){if(e.target===this)closeAdminModal();});
+document.getElementById('confirm-modal').addEventListener('click',function(e){if(e.target===this)closeConfirmModal();});
 </script>
-
 </body>
 </html>
