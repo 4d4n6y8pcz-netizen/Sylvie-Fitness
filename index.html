@@ -737,7 +737,7 @@ nav { padding: 0 20px; }
 // ══════════════════════════════════════════
 // DATA
 // ══════════════════════════════════════════
-var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhKLLGqlv4Wj-BlNBpHy1iqx8b-1GkASjDG5TjXQ2RjH3aYqDQxX0BZ_ZUdJfS43wemQ/exec';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbywYUT8HDZDWM4XJ6hScxKAhMrMFt95eoWL4pnqZy_gg7rsPkquemRyC0_1Q6h_gYHflA/exec';
 var ADMIN_PASSWORD = 'sylvie2026';
 
 var ALL_PLANS = [
@@ -782,6 +782,36 @@ function init() {
   renderPlanSelect();
   renderCalendar();
   renderBookingList();
+  loadScheduleFromSheets();
+}
+
+function loadScheduleFromSheets() {
+  if (!APPS_SCRIPT_URL) return;
+  // 用 script tag 避免 CORS 問題
+  window._scheduleCallback = function(data) {
+    try {
+      if (data.status==='ok' && data.schedule) {
+        var hasData = false;
+        var days = Object.keys(data.schedule);
+        for (var i=0;i<days.length;i++){
+          if(data.schedule[days[i]].length>0){hasData=true;break;}
+        }
+        if (hasData) {
+          WEEKLY_SCHEDULE = data.schedule;
+          renderCalendar();
+          renderBookingList();
+          if (selectedPlan) renderBookingCal();
+        }
+      }
+    } catch(e){ console.warn('課表解析失敗：',e); }
+    // 清除 script tag
+    var el = document.getElementById('_schedule_script');
+    if (el) el.remove();
+  };
+  var s = document.createElement('script');
+  s.id  = '_schedule_script';
+  s.src = APPS_SCRIPT_URL + '?callback=_scheduleCallback&t=' + Date.now();
+  document.head.appendChild(s);
 }
 
 function getDayKey(dow) {
@@ -1297,7 +1327,8 @@ function addSlot() {
   COURSES.forEach(function(c){if(c.id===courseId)course=c;});
   if(!course) return;
   WEEKLY_SCHEDULE[day].push({time:time,courseId:courseId,name:course.name.slice(0,4)});
-  if(selectedPlan) renderBookingCal();  // ★ 同步更新
+  saveScheduleToSheets();
+  if(selectedPlan) renderBookingCal();
   renderAdminSchedule(document.getElementById('admin-content'));
   showToast('已新增時段，預約月曆已同步更新','success');
 }
@@ -1305,9 +1336,20 @@ function addSlot() {
 // ★ 修正1b：removeSlot 後同步刷新學生預約月曆
 function removeSlot(day, idx) {
   WEEKLY_SCHEDULE[day].splice(idx,1);
-  if(selectedPlan) renderBookingCal();  // ★ 同步更新
+  saveScheduleToSheets();
+  if(selectedPlan) renderBookingCal();
   renderAdminSchedule(document.getElementById('admin-content'));
   showToast('已移除時段，預約月曆已同步更新');
+}
+
+function saveScheduleToSheets() {
+  if (!APPS_SCRIPT_URL) return;
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({ type:'saveSchedule', schedule: WEEKLY_SCHEDULE })
+  }).catch(function(err){ console.warn('儲存課表失敗：',err); });
 }
 
 function adminConfirmOrder(orderId) { MY_BOOKINGS.forEach(function(b){if((b.orderId||b.id)===orderId)b.status='confirmed';}); renderAdminBookings(document.getElementById('admin-content')); showToast('已確認預約','success'); }
