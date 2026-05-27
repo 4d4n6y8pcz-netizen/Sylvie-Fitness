@@ -822,7 +822,8 @@ function loadBookingsFromSheets(callback) {
               payStatus : order.payStatus || 'unpaid',
               planId    : order.planId    || '',
               planLabel : order.planLabel || '',
-              price     : idx === 0 ? (order.price || 0) : -1,
+              price     : idx === 0 ? (order.price || 0) : 0,
+              showInSchedule: true,
               totalSlots: order.slots.length,
             });
           });
@@ -1032,7 +1033,8 @@ function doSubmitBooking(name,email,phone,level,note,acct,isPilates,isSingle,tot
       course:s.courseName, date:s.dateStr, time:s.time,
       colorClass:s.colorClass, color:s.color,
       status:'pending', planId:selectedPlan.id, planLabel:selectedPlan.sublabel,
-      price:(isPilates||isSingle)?PLAN_PRICES[selectedPlan.id]:(idx===0?totalPrice:-1),
+      price:(isPilates||isSingle)?PLAN_PRICES[selectedPlan.id]:(idx===0?totalPrice:0),
+      showInSchedule:true,
       totalSlots:selectedBookSlots.length,
     });
   });
@@ -1072,7 +1074,7 @@ function renderCalendar() {
   for (var d=1;d<=daysInMonth;d++) {
     var dateStr=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
     var isToday=today.getFullYear()===y&&today.getMonth()===m&&today.getDate()===d;
-    var dayBookings=MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.price!==-1; });
+    var dayBookings=MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.showInSchedule; });
     var events=dayBookings.map(function(b){ return '<div class="cal-event '+b.colorClass+'">'+b.course.slice(0,4)+' '+b.time+'</div>'; }).join('');
     cells+='<div class="cal-day'+(isToday?' today':'')+'"><div class="cal-day-num">'+d+'</div>'+events+'</div>';
   }
@@ -1089,10 +1091,10 @@ function changeMonth(dir) {
 function renderBookingList() {
   var y=currentMonth.getFullYear(), m=currentMonth.getMonth();
   var list=document.getElementById('booking-list');
-  var filtered=MY_BOOKINGS.filter(function(b){ var d=new Date(b.date); return d.getFullYear()===y&&d.getMonth()===m&&b.price!==-1; }).sort(function(a,b){ return a.date.localeCompare(b.date); });
+  var filtered=MY_BOOKINGS.filter(function(b){ var d=new Date(b.date); return d.getFullYear()===y&&d.getMonth()===m&&b.showInSchedule; }).sort(function(a,b){ return a.date.localeCompare(b.date); });
   if (!filtered.length) { list.innerHTML='<div style="color:var(--warm-grey);font-size:14px;padding:20px 0;">本月尚無預約課程</div>'; return; }
   list.innerHTML=filtered.map(function(b){
-    var priceDisplay=b.price===0?'<span style="font-size:12px;color:var(--sage);">方案內含</span>':'$'+(b.price>0?b.price.toLocaleString():0);
+    var priceDisplay=(b.orderIdx>0)?'<span style="font-size:12px;color:var(--sage);">方案內含</span>':(b.price>0?'$'+b.price.toLocaleString():'$0');
     var statusLabel=b.status==='confirmed'?'✓ 已確認':'⏳ 待確認';
     return '<div class="booking-item"><div class="booking-item-dot" style="background:'+(b.color||'#999')+'"></div><div class="booking-item-info"><strong>'+b.course+'</strong><small>'+b.date+' · '+b.time+' · '+(b.planLabel||'單堂')+'</small></div><span class="booking-status status-'+b.status+'">'+statusLabel+'</span><div class="booking-item-price">'+priceDisplay+'</div><button class="btn-cancel" data-cancel-id="'+b.id+'">取消</button></div>';
   }).join('');
@@ -1140,7 +1142,7 @@ function showSlotPopup(dateStr, slotIdx, anchorEl) {
   var dayKey  = getDayKey(dateObj.getDay());
   var slot    = (WEEKLY_SCHEDULE[dayKey]||[])[slotIdx];
   if (!slot) return;
-  var students = MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.time===slot.time&&b.price!==-1; });
+  var students = MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.time===slot.time&&b.showInSchedule; });
   var course   = null; for (var ci=0;ci<COURSES.length;ci++){if(COURSES[ci].id===slot.courseId){course=COURSES[ci];break;}}
   var isOpen   = students.length >= 2;
   var dt       = dateStr.replace(/-/g,'');
@@ -1188,7 +1190,7 @@ function renderAdminCalendar() {
     for(var si=0;si<slots.length;si++){
       var s=slots[si], course2=null;
       for(var ci=0;ci<COURSES.length;ci++){if(COURSES[ci].id===s.courseId){course2=COURSES[ci];break;}}
-      var enrolled=MY_BOOKINGS.filter(function(b){return b.date===dateStr&&b.time===s.time&&b.price!==-1;}).length;
+      var enrolled=MY_BOOKINGS.filter(function(b){return b.date===dateStr&&b.time===s.time&&b.showInSchedule;}).length;
       var isOpen=enrolled>=2, bg2=colorMap[s.courseId]||'#888';
       var slotStyle='border-radius:5px;padding:3px 6px;margin-bottom:2px;cursor:pointer;font-size:10px;line-height:1.4;transition:all 0.15s;';
       if(isOpen){slotStyle+='background:'+bg2+';color:#fff;box-shadow:0 0 0 2px '+bg2+',0 0 8px '+bg2+'55;';}
