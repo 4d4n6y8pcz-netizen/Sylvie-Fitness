@@ -822,8 +822,7 @@ function loadBookingsFromSheets(callback) {
               payStatus : order.payStatus || 'unpaid',
               planId    : order.planId    || '',
               planLabel : order.planLabel || '',
-              price     : idx === 0 ? (order.price || 0) : 0,
-              showInSchedule: true,
+              price     : idx === 0 ? (order.price || 0) : -1,
               totalSlots: order.slots.length,
             });
           });
@@ -1033,8 +1032,7 @@ function doSubmitBooking(name,email,phone,level,note,acct,isPilates,isSingle,tot
       course:s.courseName, date:s.dateStr, time:s.time,
       colorClass:s.colorClass, color:s.color,
       status:'pending', planId:selectedPlan.id, planLabel:selectedPlan.sublabel,
-      price:(isPilates||isSingle)?PLAN_PRICES[selectedPlan.id]:(idx===0?totalPrice:0),
-      showInSchedule:true,
+      price:(isPilates||isSingle)?PLAN_PRICES[selectedPlan.id]:(idx===0?totalPrice:-1),
       totalSlots:selectedBookSlots.length,
     });
   });
@@ -1074,7 +1072,7 @@ function renderCalendar() {
   for (var d=1;d<=daysInMonth;d++) {
     var dateStr=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
     var isToday=today.getFullYear()===y&&today.getMonth()===m&&today.getDate()===d;
-    var dayBookings=MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.showInSchedule; });
+    var dayBookings=MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.price!==-1; });
     var events=dayBookings.map(function(b){ return '<div class="cal-event '+b.colorClass+'">'+b.course.slice(0,4)+' '+b.time+'</div>'; }).join('');
     cells+='<div class="cal-day'+(isToday?' today':'')+'"><div class="cal-day-num">'+d+'</div>'+events+'</div>';
   }
@@ -1091,10 +1089,10 @@ function changeMonth(dir) {
 function renderBookingList() {
   var y=currentMonth.getFullYear(), m=currentMonth.getMonth();
   var list=document.getElementById('booking-list');
-  var filtered=MY_BOOKINGS.filter(function(b){ var d=new Date(b.date); return d.getFullYear()===y&&d.getMonth()===m&&b.showInSchedule; }).sort(function(a,b){ return a.date.localeCompare(b.date); });
+  var filtered=MY_BOOKINGS.filter(function(b){ var d=new Date(b.date); return d.getFullYear()===y&&d.getMonth()===m&&b.price!==-1; }).sort(function(a,b){ return a.date.localeCompare(b.date); });
   if (!filtered.length) { list.innerHTML='<div style="color:var(--warm-grey);font-size:14px;padding:20px 0;">本月尚無預約課程</div>'; return; }
   list.innerHTML=filtered.map(function(b){
-    var priceDisplay=(b.orderIdx>0)?'<span style="font-size:12px;color:var(--sage);">方案內含</span>':(b.price>0?'$'+b.price.toLocaleString():'$0');
+    var priceDisplay=b.price===0?'<span style="font-size:12px;color:var(--sage);">方案內含</span>':'$'+(b.price>0?b.price.toLocaleString():0);
     var statusLabel=b.status==='confirmed'?'✓ 已確認':'⏳ 待確認';
     return '<div class="booking-item"><div class="booking-item-dot" style="background:'+(b.color||'#999')+'"></div><div class="booking-item-info"><strong>'+b.course+'</strong><small>'+b.date+' · '+b.time+' · '+(b.planLabel||'單堂')+'</small></div><span class="booking-status status-'+b.status+'">'+statusLabel+'</span><div class="booking-item-price">'+priceDisplay+'</div><button class="btn-cancel" data-cancel-id="'+b.id+'">取消</button></div>';
   }).join('');
@@ -1142,16 +1140,17 @@ function showSlotPopup(dateStr, slotIdx, anchorEl) {
   var dayKey  = getDayKey(dateObj.getDay());
   var slot    = (WEEKLY_SCHEDULE[dayKey]||[])[slotIdx];
   if (!slot) return;
-  var students = MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.time===slot.time&&b.showInSchedule; });
+  var students = MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.time===slot.time&&b.price!==-1; });
   var course   = null; for (var ci=0;ci<COURSES.length;ci++){if(COURSES[ci].id===slot.courseId){course=COURSES[ci];break;}}
   var isOpen   = students.length >= 2;
-  var dt       = dateStr.replace(/-/g,'');
-  var timeParts= slot.time.split(':'); var hh=timeParts[0], mm=timeParts[1];
-  var startDt  = dt+'T'+hh+mm+'00';
-  var endH     = String(parseInt(hh)+(parseInt(mm)+50>=60?1:0)).padStart(2,'0');
-  var endM     = String((parseInt(mm)+50)%60).padStart(2,'0');
-  var endDt    = dt+'T'+endH+endM+'00';
-  var gcalUrl  = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('SYLVIEFITNESS: '+(course?course.name:''))+'&dates='+startDt+'/'+endDt+'&details='+encodeURIComponent(students.map(function(s){return s.name+' <'+s.email+'>';}).join('\n'));
+  var dt       = dateStr.replace(/-/g,"");
+  var timeParts= slot.time.split(":"); var hh=parseInt(timeParts[0]), mm=parseInt(timeParts[1]);
+  var startDt  = dt+"T"+String(hh).padStart(2,"0")+String(mm).padStart(2,"0")+"00";
+  var totalEndMin = hh*60+mm+50;
+  var endH     = String(Math.floor(totalEndMin/60)).padStart(2,"0");
+  var endM     = String(totalEndMin%60).padStart(2,"0");
+  var endDt    = dt+"T"+endH+endM+"00";
+  var gcalUrl  = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("SYLVIEFITNESS: "+(course?course.name:""))+"&dates="+startDt+"/"+endDt+"&ctz=Asia%2FTaipei&details="+encodeURIComponent(students.map(function(s){return s.name+" <"+s.email+">";}).join("\n"));
   var openBg   = isOpen?'#E8F5EB':'#FFF3E0';
   var openColor= isOpen?'var(--success)':'#E08C1A';
   var studentsHtml = '';
@@ -1190,7 +1189,8 @@ function renderAdminCalendar() {
     for(var si=0;si<slots.length;si++){
       var s=slots[si], course2=null;
       for(var ci=0;ci<COURSES.length;ci++){if(COURSES[ci].id===s.courseId){course2=COURSES[ci];break;}}
-      var enrolled=MY_BOOKINGS.filter(function(b){return b.date===dateStr&&b.time===s.time&&b.showInSchedule;}).length;
+      var _slotTime=s.time, _slotDate=dateStr;
+      var enrolled=MY_BOOKINGS.filter(function(b){return b.date===_slotDate&&b.time===_slotTime&&b.price!==-1;}).length;
       var isOpen=enrolled>=2, bg2=colorMap[s.courseId]||'#888';
       var slotStyle='border-radius:5px;padding:3px 6px;margin-bottom:2px;cursor:pointer;font-size:10px;line-height:1.4;transition:all 0.15s;';
       if(isOpen){slotStyle+='background:'+bg2+';color:#fff;box-shadow:0 0 0 2px '+bg2+',0 0 8px '+bg2+'55;';}
@@ -1237,59 +1237,23 @@ function getOrders() {
 function getCourseColor(colorClass){ var map={pilates:'#7B5EA7',strength:'#3A7CA5',cardio:'#A5763A',gymnastics:'#3A8A6A',weightlifting:'#3A8A6A'}; return map[colorClass]||'#888'; }
 function toggleOrderDetail(orderId){ var row=document.getElementById('detail-'+orderId); if(row)row.style.display=row.style.display==='none'?'block':'none'; }
 
-var dashboardMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-
-function changeDashboardMonth(dir) {
-  dashboardMonth = new Date(dashboardMonth.getFullYear(), dashboardMonth.getMonth()+dir, 1);
-  renderAdminDashboard(document.getElementById('admin-content'));
-}
-
-function getOrdersForMonth(y, m) {
-  // Filter bookings that have at least one slot in the given month
-  var orderMap={};
-  MY_BOOKINGS.forEach(function(b){
-    var d = new Date(b.date);
-    if (d.getFullYear()!==y || d.getMonth()!==m) return;
-    var key=b.orderId||b.id;
-    if(!orderMap[key]){orderMap[key]={orderId:key,name:b.name,email:b.email,phone:b.phone,planId:b.planId,planLabel:b.planLabel,acct:b.acct,price:0,status:b.status,payStatus:b.payStatus||'unpaid',note:b.note,level:b.level,slots:[]};}
-    orderMap[key].slots.push({course:b.course,date:b.date,time:b.time,colorClass:b.colorClass});
-    if(b.price>0) orderMap[key].price=b.price;
-    if(b.status==='confirmed') orderMap[key].status='confirmed';
-    if(b.payStatus==='paid')   orderMap[key].payStatus='paid';
-  });
-  return Object.values(orderMap).sort(function(a,b){return b.orderId-a.orderId;});
-}
-
 function renderAdminDashboard(content) {
-  var monthNames=['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
-  var dy=dashboardMonth.getFullYear(), dm=dashboardMonth.getMonth();
-  var isCurrentMonth = (dy===today.getFullYear()&&dm===today.getMonth());
-  var orders=getOrdersForMonth(dy, dm);
-  var allOrders=getOrders();
+  var orders=getOrders();
   var revenue=orders.filter(function(o){return o.payStatus==='paid';}).reduce(function(s,o){return s+(o.price||0);},0);
-  var allRevenue=allOrders.filter(function(o){return o.payStatus==='paid';}).reduce(function(s,o){return s+(o.price||0);},0);
   var pending=orders.filter(function(o){return o.status==='pending';}).length;
   var confirmed=orders.filter(function(o){return o.status==='confirmed';}).length;
   var cards='';
-  orders.forEach(function(o){
+  orders.slice(0,8).forEach(function(o){
     var slots=o.slots.map(function(s){return '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:'+getCourseColor(s.colorClass)+';margin-right:4px;vertical-align:middle;"></span>'+s.course+' '+s.date+' '+s.time;}).join('<br>');
     var payBadge=o.payStatus==='paid'?'<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;font-weight:600;">💰 已收款</span>':'<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;font-weight:600;">⏳ 待收款</span>';
     var statusBadge=o.status==='confirmed'?'<span style="padding:3px 10px;border-radius:20px;background:#E8F5EB;color:#3A8A5A;font-size:11px;">✓ 已確認</span>':'<span style="padding:3px 10px;border-radius:20px;background:#FFF3E0;color:#E08C1A;font-size:11px;">⏳ 待確認</span>';
     cards+='<div style="background:white;border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><div><div style="font-weight:600;font-size:15px;">'+(o.name||'—')+'</div><div style="font-size:12px;color:var(--warm-grey);margin-top:2px;">'+(o.email||'—')+'</div></div><div style="font-family:\'Cormorant Garamond\',serif;font-size:22px;color:var(--accent-dark);">'+(o.price>0?'$'+o.price.toLocaleString():'—')+'</div></div><div style="font-size:12px;color:var(--warm-grey);line-height:1.8;">'+slots+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"><span style="padding:3px 10px;border-radius:20px;background:var(--cream);color:var(--charcoal);font-size:11px;">'+(o.planLabel||'—')+'</span>'+statusBadge+payBadge+'</div></div>';
   });
-  content.innerHTML=''
-    +'<div class="admin-header"><h2>總覽儀表板</h2><p>SYLVIEFITNESS</p></div>'
-    +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap;">'
-    +'<button class="btn-icon" onclick="changeDashboardMonth(-1)">&#8249;</button>'
-    +'<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:22px;min-width:130px;text-align:center;">'+dy+' 年 '+monthNames[dm]+'</h3>'
-    +'<button class="btn-icon" onclick="changeDashboardMonth(1)">&#8250;</button>'
-    +(isCurrentMonth?'<span style="font-size:11px;padding:3px 10px;background:#E8F5EB;color:#3A8A5A;border-radius:20px;">本月</span>':'')
-    +'<span style="margin-left:auto;font-size:12px;color:var(--warm-grey);">累計總收款：<strong style="color:var(--charcoal);">$'+allRevenue.toLocaleString()+'</strong></span>'
-    +'</div>'
-    +'<div class="stats-grid"><div class="stat-card"><div class="stat-label">本月訂單數</div><div class="stat-value">'+orders.length+'</div><div class="stat-sub">筆</div></div><div class="stat-card"><div class="stat-label">本月已收款</div><div class="stat-value">$'+revenue.toLocaleString()+'</div><div class="stat-sub">新台幣</div></div><div class="stat-card"><div class="stat-label">待確認</div><div class="stat-value">'+pending+'</div><div class="stat-sub">筆</div></div><div class="stat-card"><div class="stat-label">已確認</div><div class="stat-value">'+confirmed+'</div><div class="stat-sub">筆</div></div></div>'
+  content.innerHTML='<div class="admin-header"><h2>總覽儀表板</h2><p>SYLVIEFITNESS</p></div>'
+    +'<div class="stats-grid"><div class="stat-card"><div class="stat-label">總訂單數</div><div class="stat-value">'+orders.length+'</div><div class="stat-sub">筆</div></div><div class="stat-card"><div class="stat-label">已收款金額</div><div class="stat-value">$'+revenue.toLocaleString()+'</div><div class="stat-sub">新台幣</div></div><div class="stat-card"><div class="stat-label">待確認</div><div class="stat-value">'+pending+'</div><div class="stat-sub">筆</div></div><div class="stat-card"><div class="stat-label">已確認</div><div class="stat-value">'+confirmed+'</div><div class="stat-sub">筆</div></div></div>'
     +'<div style="padding:14px 18px;background:#FFF8F0;border:1px solid #F0D9B5;border-radius:12px;font-size:13px;line-height:1.9;margin-bottom:24px;"><strong>確認收款流程：</strong><br>① 學員送出預約（含帳號後五碼）→ ② 至「預約名單」對照入帳 → ③ 點「確認收款」→ ④ 點「確認預約」→ ⑤ 手動寄出確認信</div>'
-    +'<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:20px;margin-bottom:14px;">'+dy+' 年 '+monthNames[dm]+' 訂單</h3>'
-    +'<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">'+(cards||'<div style="color:var(--warm-grey);padding:24px;grid-column:1/-1;text-align:center;">本月尚無預約</div>')+'</div>';
+    +'<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:20px;margin-bottom:14px;">近期訂單</h3>'
+    +'<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">'+(cards||'<div style="color:var(--warm-grey);padding:24px;grid-column:1/-1;text-align:center;">目前尚無預約</div>')+'</div>';
 }
 
 function renderAdminCalTab(content) {
@@ -1303,31 +1267,10 @@ function renderAdminCalTab(content) {
   setTimeout(renderAdminCalendar,50);
 }
 
-var bookingsMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-
-function changeBookingsMonth(dir) {
-  bookingsMonth = new Date(bookingsMonth.getFullYear(), bookingsMonth.getMonth()+dir, 1);
-  renderAdminBookings(document.getElementById('admin-content'));
-}
-
 function renderAdminBookings(content) {
-  var monthNames=['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
-  var by=bookingsMonth.getFullYear(), bm=bookingsMonth.getMonth();
-  var orders=getOrdersForMonth(by, bm);
-  var allOrders=getOrders();
+  var orders=getOrders();
   var totalRevenue=orders.filter(function(o){return o.payStatus==='paid';}).reduce(function(s,o){return s+(o.price||0);},0);
-  var allRevenue=allOrders.filter(function(o){return o.payStatus==='paid';}).reduce(function(s,o){return s+(o.price||0);},0);
-  if(!orders.length){
-    content.innerHTML='<div class="admin-header"><h2>預約名單</h2></div>'
-      +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">'
-      +'<button class="btn-icon" onclick="changeBookingsMonth(-1)">&#8249;</button>'
-      +'<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:22px;min-width:130px;text-align:center;">'+by+' 年 '+monthNames[bm]+'</h3>'
-      +'<button class="btn-icon" onclick="changeBookingsMonth(1)">&#8250;</button>'
-      +'<span style="margin-left:auto;font-size:12px;color:var(--warm-grey);">累計總收款：<strong>$'+allRevenue.toLocaleString()+'</strong></span>'
-      +'</div>'
-      +'<div style="padding:40px;text-align:center;color:var(--warm-grey);">本月尚無預約</div>';
-    return;
-  }
+  if(!orders.length){content.innerHTML='<div class="admin-header"><h2>預約名單</h2><p>目前尚無預約記錄</p></div><div style="padding:40px;text-align:center;color:var(--warm-grey);">尚無學員預約</div>';return;}
   var cards='';
   orders.forEach(function(o){
     var slotsHtml=o.slots.map(function(s){return '<div style="margin-bottom:3px;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:'+getCourseColor(s.colorClass)+';margin-right:5px;vertical-align:middle;"></span>'+s.course+' '+s.date+' '+s.time+'</div>';}).join('');
@@ -1337,15 +1280,7 @@ function renderAdminBookings(content) {
     var payBtn=o.payStatus!=='paid'?'<button class="btn-cancel" style="font-size:11px;background:#E8F5EB;border-color:#6B9E7A;color:#3A8A5A;" onclick="markPaid('+o.orderId+')">確認收款</button>':'<button class="btn-cancel" style="font-size:11px;color:var(--sage);border-color:var(--sage);" disabled>已收款</button>';
     cards+='<div id="order-card-'+o.orderId+'" style="background:white;border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:14px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;"><div><div style="font-weight:600;font-size:16px;">'+(o.name||'—')+'</div><div style="font-size:12px;color:var(--warm-grey);margin-top:2px;">'+(o.email||'—')+' · '+(o.phone||'—')+'</div></div><div style="text-align:right;"><div style="font-family:\'Cormorant Garamond\',serif;font-size:26px;color:var(--accent-dark);line-height:1;">'+(o.price>0?'$'+o.price.toLocaleString():'—')+'</div><div style="font-size:11px;color:var(--warm-grey);">'+(o.planLabel||'—')+'</div></div></div><div style="font-size:12px;color:var(--charcoal);line-height:1.9;padding:10px 12px;background:var(--warm-white);border-radius:8px;margin-bottom:12px;">'+slotsHtml+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">'+statusBadge+payBadge+'<span style="font-size:11px;color:var(--warm-grey);">帳號後五碼: <strong style="font-family:monospace;letter-spacing:1px;">'+(o.acct||'—')+'</strong></span></div><div id="detail-'+o.orderId+'" style="display:none;padding:10px 12px;background:#FAFAF8;border-radius:8px;font-size:12px;margin-bottom:12px;"><span style="color:var(--warm-grey);">程度：</span>'+(o.level||'—')+'&nbsp;&nbsp;<span style="color:var(--warm-grey);">備註：</span>'+(o.note||'（無）')+'&nbsp;&nbsp;<span style="color:var(--warm-grey);">訂單編號：</span>'+o.orderId+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn-cancel" style="font-size:11px;" onclick="toggleOrderDetail('+o.orderId+')">展開詳細</button>'+payBtn+confirmBtn+'<button class="btn-cancel" style="font-size:11px;border-color:#D4696A;color:#D4696A;" onclick="adminDeleteOrder('+o.orderId+')">刪除</button></div></div>';
   });
-  content.innerHTML=''
-    +'<div class="admin-header"><h2>預約名單</h2><p>'+by+' 年 '+monthNames[bm]+' · 共 '+orders.length+' 筆・本月收款 $'+totalRevenue.toLocaleString()+'</p></div>'
-    +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">'
-    +'<button class="btn-icon" onclick="changeBookingsMonth(-1)">&#8249;</button>'
-    +'<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:22px;min-width:130px;text-align:center;">'+by+' 年 '+monthNames[bm]+'</h3>'
-    +'<button class="btn-icon" onclick="changeBookingsMonth(1)">&#8250;</button>'
-    +'<span style="margin-left:auto;font-size:12px;color:var(--warm-grey);">累計總收款：<strong>$'+allRevenue.toLocaleString()+'</strong></span>'
-    +'</div>'
-    +cards;
+  content.innerHTML='<div class="admin-header"><h2>預約名單</h2><p>共 '+orders.length+' 筆訂單・已收款 $'+totalRevenue.toLocaleString()+'</p></div>'+cards;
 }
 
 function markPaid(orderId) {
