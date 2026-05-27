@@ -778,30 +778,37 @@ function loadScheduleFromSheets() {
   document.head.appendChild(s);
 }
 
-// ── 從 Sheets 讀預約訂單（進後台時呼叫）──
+// ══════════════════════════════════════════
+// FIX 2：從 Sheets 讀預約訂單改為「合併」模式
+// 進後台時先顯示本地資料，Sheets 資料只補充不覆蓋
+// ══════════════════════════════════════════
 function loadBookingsFromSheets(callback) {
-  if (!APPS_SCRIPT_URL) { if (callback) callback(); return; }
+  if (!APPS_SCRIPT_URL) {
+    if (callback) callback();
+    return;
+  }
 
-  // 顯示載入中
-  var content = document.getElementById('admin-content');
-  if (content) content.innerHTML = '<div style="padding:60px;text-align:center;color:var(--warm-grey);"><div class="loading-spinner"></div> 載入訂單中...</div>';
+  // 先用本地資料渲染（讓後台立刻看到剛送出的預約）
+  if (callback) callback();
 
+  // 非同步嘗試從 Sheets 補充資料（若 Sheets 有資料才合併）
   window._bookingsCallback = function(data) {
     try {
-      if (data.status === 'ok' && data.bookings) {
-        MY_BOOKINGS = [];
-        // 建立課程名稱 → colorClass/color 的對照表
+      if (data.status === 'ok' && data.bookings && data.bookings.length > 0) {
         var colorMap = {};
         COURSES.forEach(function(c) { colorMap[c.name] = { colorClass: c.colorClass, color: c.color }; });
-        // 也加 courseId 對照
-        var colorMapById = {};
-        COURSES.forEach(function(c) { colorMapById[c.id] = { colorClass: c.colorClass, color: c.color }; });
 
+        // 收集 Sheets 已有的 orderId，避免重複
+        var existingOrderIds = {};
+        MY_BOOKINGS.forEach(function(b) { existingOrderIds[b.orderId] = true; });
+
+        var added = 0;
         data.bookings.forEach(function(order) {
-          var orderId = Number(order.orderId) || Date.now();
+          var orderId = Number(order.orderId) || 0;
+          // 本地已有此訂單則跳過，避免重複
+          if (existingOrderIds[orderId]) return;
           if (!order.slots || !order.slots.length) return;
           order.slots.forEach(function(s, idx) {
-            // 嘗試從課程名稱比對顏色
             var cc = colorMap[s.course] || { colorClass:'cardio', color:'#A5763A' };
             MY_BOOKINGS.push({
               id        : orderId + idx,
@@ -826,15 +833,24 @@ function loadBookingsFromSheets(callback) {
               isExtra   : idx > 0,
               totalSlots: order.slots.length,
             });
+            added++;
           });
         });
-        renderCalendar();
-        renderBookingList();
+
+        if (added > 0) {
+          renderCalendar();
+          renderBookingList();
+          // 若後台已開啟則重新渲染
+          var content = document.getElementById('admin-content');
+          if (content && document.getElementById('page-admin').classList.contains('active')) {
+            var activeTab = document.querySelector('.admin-nav-item.active');
+            if (activeTab) showAdminTab(activeTab.dataset.tab);
+          }
+        }
       }
     } catch(err) { console.warn('訂單解析失敗：', err); }
     var el = document.getElementById('_bookings_script');
     if (el) el.remove();
-    if (callback) callback();
   };
 
   var s = document.createElement('script');
@@ -1024,6 +1040,10 @@ function submitBooking() {
   showConfirmModal(summaryHTML, function() { doSubmitBooking(name,email,phone,level,note,acct,isPilates,isSingle,totalPrice); });
 }
 
+// ══════════════════════════════════════════
+// FIX 1：doSubmitBooking 送出後同步 currentMonth
+// 讓「我的課表」直接顯示預約月份
+// ══════════════════════════════════════════
 function doSubmitBooking(name,email,phone,level,note,acct,isPilates,isSingle,totalPrice) {
   var orderId = Date.now();
   selectedBookSlots.forEach(function(s,idx) {
@@ -1038,6 +1058,13 @@ function doSubmitBooking(name,email,phone,level,note,acct,isPilates,isSingle,tot
       totalSlots:selectedBookSlots.length,
     });
   });
+
+  // ★ FIX 1：把 currentMonth 切換到第一筆預約所在的月份
+  if (selectedBookSlots.length > 0) {
+    var firstDate = new Date(selectedBookSlots[0].dateStr + 'T00:00:00');
+    currentMonth = new Date(firstDate.getFullYear(), firstDate.getMonth(), 1);
+  }
+
   var payload = {
     orderId:orderId, name:name, email:email, phone:phone, level:level, note:note, acct:acct,
     planId:selectedPlan.id, planLabel:selectedPlan.sublabel, price:totalPrice,
@@ -1092,7 +1119,7 @@ function changeMonth(dir) {
 function renderBookingList() {
   var y=currentMonth.getFullYear(), m=currentMonth.getMonth();
   var list=document.getElementById('booking-list');
-  var filtered=MY_BOOKINGS.filter(function(b){ var d=new Date(b.date); return d.getFullYear()===y&&d.getMonth()===m&&!b.isExtra; }).sort(function(a,b){ return a.date.localeCompare(b.date); });
+  var filtered=MY_BOOKINGS.filter(function(b){ var d=new Date(b.date+'T00:00:00'); return d.getFullYear()===y&&d.getMonth()===m&&!b.isExtra; }).sort(function(a,b){ return a.date.localeCompare(b.date); });
   if (!filtered.length) { list.innerHTML='<div style="color:var(--warm-grey);font-size:14px;padding:20px 0;">本月尚無預約課程</div>'; return; }
   list.innerHTML=filtered.map(function(b){
     var priceDisplay=b.price===0?'<span style="font-size:12px;color:var(--sage);">方案內含</span>':'$'+(b.price>0?b.price.toLocaleString():0);
@@ -1126,7 +1153,7 @@ function checkAdminPw() {
   if (pw === ADMIN_PASSWORD) {
     closeAdminModal();
     showPage('admin');
-    // ★ 進入後台時從 Google Sheets 載入訂單
+    // ★ FIX 2：進後台先用本地資料渲染，再非同步補充 Sheets 資料
     loadBookingsFromSheets(function() { showAdminTab('dashboard'); });
   } else {
     document.getElementById('admin-pw-error').textContent = '密碼錯誤，請再試一次';
@@ -1135,6 +1162,38 @@ function checkAdminPw() {
 }
 
 var slotPopupVisible = false;
+
+// ══════════════════════════════════════════
+// FIX 3：Google 日曆連結格式修正
+// 正確格式：YYYYMMDDTHHMMSS（補零，無分隔符號）
+// ══════════════════════════════════════════
+function buildGCalUrl(dateStr, timeStr, courseName, students) {
+  // dateStr: "2026-05-27"  →  "20260527"
+  var dt = dateStr.replace(/-/g, '');
+
+  // timeStr: "07:00" → hh=7, mm=0
+  var parts = timeStr.split(':');
+  var hh = parseInt(parts[0], 10);
+  var mm = parseInt(parts[1] || '0', 10);
+
+  // 開始時間
+  var startDt = dt + 'T' + String(hh).padStart(2,'0') + String(mm).padStart(2,'0') + '00';
+
+  // 結束時間（+50分鐘）
+  var totalEndMin = hh * 60 + mm + 50;
+  var endH = Math.floor(totalEndMin / 60);
+  var endM = totalEndMin % 60;
+  var endDt = dt + 'T' + String(endH).padStart(2,'0') + String(endM).padStart(2,'0') + '00';
+
+  var details = students.map(function(s){ return s.name + ' <' + s.email + '>'; }).join('\n');
+
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text=' + encodeURIComponent('SYLVIEFITNESS: ' + courseName)
+    + '&dates=' + startDt + '/' + endDt
+    + '&ctz=Asia%2FTaipei'
+    + '&details=' + encodeURIComponent(details);
+}
+
 function showSlotPopup(dateStr, slotIdx, anchorEl) {
   var existing = document.getElementById('slot-popup');
   if (existing) existing.remove();
@@ -1146,14 +1205,10 @@ function showSlotPopup(dateStr, slotIdx, anchorEl) {
   var students = MY_BOOKINGS.filter(function(b){ return b.date===dateStr&&b.time===slot.time&&!b.isExtra; });
   var course   = null; for (var ci=0;ci<COURSES.length;ci++){if(COURSES[ci].id===slot.courseId){course=COURSES[ci];break;}}
   var isOpen   = students.length >= 2;
-  var dt       = dateStr.replace(/-/g,"");
-  var timeParts= slot.time.split(":"); var hh=parseInt(timeParts[0]), mm=parseInt(timeParts[1]);
-  var startDt  = dt+"T"+String(hh).padStart(2,"0")+String(mm).padStart(2,"0")+"00";
-  var totalEndMin = hh*60+mm+50;
-  var endH     = String(Math.floor(totalEndMin/60)).padStart(2,"0");
-  var endM     = String(totalEndMin%60).padStart(2,"0");
-  var endDt    = dt+"T"+endH+endM+"00";
-  var gcalUrl  = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("SYLVIEFITNESS: "+(course?course.name:""))+"&dates="+startDt+"/"+endDt+"&ctz=Asia%2FTaipei&details="+encodeURIComponent(students.map(function(s){return s.name+" <"+s.email+">";}).join("\n"));
+
+  // ★ FIX 3：使用修正後的 buildGCalUrl
+  var gcalUrl  = buildGCalUrl(dateStr, slot.time, course ? course.name : '', students);
+
   var openBg   = isOpen?'#E8F5EB':'#FFF3E0';
   var openColor= isOpen?'var(--success)':'#E08C1A';
   var studentsHtml = '';
